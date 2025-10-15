@@ -26,7 +26,7 @@ export default function Home() {
       <JoinUs />
       <Events />
       <NGreenArmy />
-  <Partners />
+      <Partners />
       <Testimonials />
       <Contact />
     </>

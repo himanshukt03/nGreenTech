@@ -9,51 +9,50 @@ type EventItem = {
   badge?: string;
 };
 
-const upcomingEvents: EventItem[] = [
-  {
-    id: "green-summit",
-    title: "nGreenTech x Schools Climate League",
-    date: "26 Oct 2025",
-    location: "Hyderabad, India",
-    description:
-      "Play-off style championship where school teams go head-to-head on solving real e-waste case files with live mentoring.",
-    badge: "Upcoming",
-  },
-  {
-    id: "repair-lab",
-    title: "Circular Repair Lab",
-    date: "09 Nov 2025",
-    location: "Visakhapatnam Makers Lab",
-    description:
-      "Hands-on fix-a-thon pairing repair coaches with students to extend gadget lifecycles and document emissions avoided.",
-    badge: "Limited Seats",
-  },
-];
+const upcomingEvents: EventItem[] = [];
 
 const pastEvents: EventItem[] = [
   {
-    id: "junicorn",
-    title: "ISF JUNICORN Sustainability Sprint",
-    date: "Jul 2025",
-    location: "Delhi NCR",
-    description:
-      "40 student founders co-designed e-waste ventures earning 4.6 tonnes in avoided emissions.",
+    id: "sdg-summit-2025",
+    title: "SDG Summit 2025",
+    date: "2025",
+    location: "Global Forum",
+    description: "Recap available on LinkedIn (@ngreentech_org).",
   },
   {
-    id: "green-drive",
-    title: "Community E-waste Drive",
-    date: "Mar 2025",
-    location: "Andhra Pradesh",
-    description:
-      "Six ward committees activated for source segregation with 82 kg responsibly channelised in 48 hours.",
+    id: "podcast-skit",
+    title: "PODCAST at SKIT",
+    date: "2025",
+    location: "SKIT",
+    description: "Listen in via LinkedIn for photos and session highlights.",
   },
   {
-    id: "youth-lab",
-    title: "Youth Eco Innovators Lab",
-    date: "Dec 2024",
-    location: "Virtual",
-    description:
-      "Cross-country accelerator showcasing 15 prototypes for circular living inside campuses.",
+    id: "singularity-summit-2025",
+    title: "Singularity Summit 2025",
+    date: "2025",
+    location: "Global Innovation Forum",
+    description: "See LinkedIn for behind-the-scenes moments and key takeaways.",
+  },
+  {
+    id: "christ-university",
+    title: "Christ University",
+    date: "2025",
+    location: "Bengaluru, India",
+    description: "Campus engagement stories documented on LinkedIn.",
+  },
+  {
+    id: "august-fest-2025",
+    title: "August Fest 2025",
+    date: "2025",
+    location: "Hyderabad, India",
+    description: "Catch the showcase recap on LinkedIn (@ngreentech_org).",
+  },
+  {
+    id: "isf-junicorn-texas",
+    title: "ISF JUNICORN event at Texas State University",
+    date: "2025",
+    location: "Texas, USA",
+    description: "Highlights and photos shared on our LinkedIn page.",
   },
 ];
 
@@ -77,24 +76,36 @@ const Events = () => {
               </span>
             </div>
             <div className="mt-6 space-y-6">
-              {upcomingEvents.map((event) => (
-                <article
-                  key={event.id}
-                  className="rounded-2xl border border-primary/10 bg-white/95 p-6 shadow-btn-light transition hover:-translate-y-1 hover:shadow-one"
-                >
-                  <div className="flex flex-wrap items-center justify-between gap-3">
-                    <span className="inline-flex items-center rounded-full border border-primary/40 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.35em] text-primary">
-                      {event.badge}
-                    </span>
-                    <span className="text-sm font-semibold text-dark/70">{event.date}</span>
-                  </div>
-                  <h4 className="mt-5 text-2xl font-semibold text-dark">{event.title}</h4>
-                  <p className="mt-2 text-xs font-semibold uppercase tracking-[0.25em] text-body-color">
-                    {event.location}
-                  </p>
-                  <p className="mt-4 text-sm leading-relaxed text-body-color">{event.description}</p>
-                </article>
-              ))}
+              {upcomingEvents.length > 0 ? (
+                upcomingEvents.map((event) => (
+                  <article
+                    key={event.id}
+                    className="rounded-2xl border border-primary/10 bg-white/95 p-6 shadow-btn-light transition hover:-translate-y-1 hover:shadow-one"
+                  >
+                    <div className="flex flex-wrap items-center justify-between gap-3">
+                      {event.badge ? (
+                        <span className="inline-flex items-center rounded-full border border-primary/40 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.35em] text-primary">
+                          {event.badge}
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center rounded-full border border-primary/20 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.35em] text-primary/70">
+                          Upcoming
+                        </span>
+                      )}
+                      <span className="text-sm font-semibold text-dark/70">{event.date}</span>
+                    </div>
+                    <h4 className="mt-5 text-2xl font-semibold text-dark">{event.title}</h4>
+                    <p className="mt-2 text-xs font-semibold uppercase tracking-[0.25em] text-body-color">
+                      {event.location}
+                    </p>
+                    <p className="mt-4 text-sm leading-relaxed text-body-color">{event.description}</p>
+                  </article>
+                ))
+              ) : (
+                <div className="rounded-2xl border border-primary/10 bg-white/95 p-6 text-sm leading-relaxed text-body-color shadow-btn-light">
+                  I will update shortly.
+                </div>
+              )}
             </div>
           </div>
 

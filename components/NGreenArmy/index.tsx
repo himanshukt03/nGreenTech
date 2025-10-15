@@ -23,6 +23,7 @@ type Member = {
 
 type Leader = {
   id: string;
+  rank: number;
   name: string;
   ewaste: string;
   points: number;
@@ -30,138 +31,127 @@ type Leader = {
 
 const members: Member[] = [
   {
-    id: "nayan",
+    id: "nayan-adithya",
     name: "Nayan Adithya Tangutooru",
-    role: "Founder",
+    role: "Founder & CEO",
     grade: "Grade V",
     school: "Bangalore International Academy",
     location: "Bengaluru, Karnataka",
     phone: "7730041280",
     email: "tnayanadithya@gmail.com",
-    summary: "Leads nGreenTech's mission to turn e-waste recovery into a joyful learning experience for kids across India.",
-    bio: "Nayan founded nGreenTech to help every child become an eco-warrior. He orchestrates collection drives, speaks on global stages, and builds climate curricula with educators.",
-    highlight: "Coordinated 30+ campus cleanups and mentors regional chapter leads.",
+    summary: "Leads nGreenTech's youth-led movement and inspires peers to lead climate missions across India.",
+    bio: "Nayan founded nGreenTech to prove children can be powerful climate leaders. He designs programmes, speaks at global forums, and mentors every squad that joins the mission.",
+  highlight: "Chaired international sessions including Texas State University's ISF JUNICORN showcase.",
     mediaUrl: "https://www.youtube.com/watch?v=ApniMHLPgLo",
     image: getImagePath("/images/about/nayan_adithya.jpg"),
   },
   {
     id: "utkarsh",
     name: "Utkarsh",
-    role: "Core Member",
+    role: "Operations Captain",
     grade: "Grade VI",
     school: "Chrysalis High",
     location: "Bengaluru, Karnataka",
     summary: "Champions device auditing drives and keeps campus teams focused on safe recycling standards.",
-    bio: "Utkarsh leads weekly peer briefings at Chrysalis High to catalogue gadgets for drop-off and ensure safety-first handling.",
-    highlight: "Designed the labelling workflow used by three partner schools.",
-  },
-  {
-    id: "kartikeya",
-    name: "Kartikeya",
-    role: "Core Member",
-    grade: "Grade IV",
-    school: "National Public School",
-    location: "Bengaluru, Karnataka",
-    summary: "Runs storytelling corners that help juniors understand circular economy basics.",
-    bio: "Kartikeya creates comic-style explainers and activity sheets that simplify recycling habits for primary learners.",
-    highlight: "Led classroom pledge sessions reaching 220 students.",
+    bio: "Utkarsh leads weekly peer briefings to catalogue gadgets for drop-off, coordinates logistics, and ensures every collection follows safety-first protocols.",
+    highlight: "Designed the labelling workflow now adopted by partnering schools.",
   },
   {
     id: "praneesh",
     name: "Praneesh",
-    role: "Core Member",
+    role: "Logistics Lead",
     grade: "Grade VII",
     school: "Whitefield Global School",
     location: "Bengaluru, Karnataka",
-    summary: "Coordinates logistics for weekend e-waste camps and volunteer assignments.",
-    bio: "Praneesh manages the sign-up and routing system that keeps Whitefield Global School's drives smooth and transparent.",
-    highlight: "Introduced barcode tracking for collected devices.",
+    summary: "Coordinates volunteer rosters and ensures every drive runs with clockwork precision.",
+    bio: "Praneesh manages sign-ups, routing, and inventory tracking so that each neighbourhood collection hits its targets without waste.",
+    highlight: "Introduced barcode tracking for collected devices to improve transparency.",
   },
   {
-    id: "vivaan",
-    name: "Vivaan",
-    role: "Core Member",
-    grade: "Grade III",
-    school: "Vagdevi Vilas School",
-    location: "Bengaluru, Karnataka",
-    summary: "Hosts eco-club games that motivate younger peers to recycle household electronics.",
-    bio: "Vivaan's gamified scoreboard keeps his neighbourhood engaged in weekly segregation challenges.",
-    highlight: "Raised 40+ pledges from families in his housing community.",
-  },
-  {
-    id: "aaradhya",
-    name: "Aaradhya Chappali",
-    role: "Core Member",
+    id: "aradhya",
+    name: "Aradhya",
+    role: "Storytelling Champion",
     grade: "Grade V",
     school: "AHPS",
     location: "Bengaluru, Karnataka",
-    summary: "Collects impact stories from volunteers and shares them at assemblies.",
-    bio: "Aaradhya documents every drive's highlights and encourages peers to champion sustainability beyond campus.",
-    highlight: "Produced three short films celebrating student-led repair efforts.",
+    summary: "Turns every climate initiative into a story that moves classmates and communities.",
+    bio: "Aradhya documents drive highlights, hosts assemblies, and produces short films that keep sustainability conversations vibrant in schools.",
+    highlight: "Directed mini-documentaries celebrating volunteer-led repair missions.",
   },
   {
-    id: "joshith",
-    name: "Joshith Eswar",
-    role: "Core Member",
+    id: "suhit",
+    name: "Suhit",
+    role: "Collection Strategist",
+    grade: "Grade VI",
+    school: "Bangalore International Academy",
+    location: "Bengaluru, Karnataka",
+    summary: "Builds neighbourhood action plans that bring record e-waste collections every month.",
+    bio: "Suhit coaches junior squads on doorstep conversations, ensuring families understand why safe recycling matters and how to participate.",
+    highlight: "Achieved the highest monthly recovery with 16 Kgs collected in a single drive.",
+  },
+  {
+    id: "vynavi",
+    name: "Vynavi",
+    role: "Community Connector",
+    grade: "Grade IV",
+    school: "Vagdevi Vilas School",
+    location: "Bengaluru, Karnataka",
+    summary: "Brings families, schools, and local businesses together for climate-positive events.",
+    bio: "Vynavi curates green pledges, coordinates plantation drives, and keeps younger buddies energised with creative challenges.",
+    highlight: "Mobilised three neighbourhoods for a week-long segregation marathon.",
+  },
+  {
+    id: "josith",
+    name: "Josith",
+    role: "Regional Lead",
     grade: "Grade V",
     school: "Maria Public School",
     location: "Guwahati, Assam",
-    summary: "Launches regional awareness rallies and partners with ward teams for safe collection.",
-    bio: "Joshith builds collaborations with local civic groups in Guwahati to create accessible drop-off stations.",
+    summary: "Launches regional awareness rallies and partners with civic teams for safe collection.",
+    bio: "Josith builds collaborations with local groups in Assam to open accessible drop-off stations and share circular economy know-how.",
     highlight: "Scaled the city's first children's climate pledge wall.",
   },
   {
     id: "aadya",
     name: "Aadya",
-    role: "Member",
+    role: "Design & Outreach",
     grade: "Grade VII",
     school: "National Public School",
     location: "Bengaluru, Karnataka",
-    summary: "Designs posters and social media snippets that rally classmates for every drive.",
-    bio: "Aadya curates digital toolkits and friendly reminders to keep her school community informed.",
+    summary: "Designs posters and social snippets that rally classmates for every drive.",
+    bio: "Aadya curates digital toolkits, writes quick explainers, and keeps chapters aligned on campaign messaging.",
     highlight: "Built a template library now used across two chapters.",
   },
   {
-    id: "prakriti",
-    name: "Prakriti",
-    role: "Member",
-    grade: "Grade VI",
-    school: "National Public School",
+    id: "adarsh-rathi",
+    name: "Adarsh Rathi",
+    role: "Innovation Scout",
+    grade: "Grade VIII",
+    school: "Bangalore International Academy",
     location: "Bengaluru, Karnataka",
-    summary: "Supports data logging and impact summaries after each recycling sprint.",
-    bio: "Prakriti analyses collection numbers and prepares concise reports for parents and partners.",
-    highlight: "Introduced simple dashboards that track category-wise e-waste.",
+    summary: "Explores new reuse pathways for refurbished gadgets and components.",
+    bio: "Adarsh experiments with upcycling ideas, tracks repair success stories, and mentors peers on responsible tech usage.",
+    highlight: "Piloted a device donation loop connecting students with NGOs.",
   },
   {
-    id: "manas",
-    name: "Manas",
-    role: "Member",
-    grade: "Grade V",
-    school: "Maria Public School",
-    location: "Guwahati, Assam",
-    summary: "Keeps the collection bay organised and ensures everything is safely packed for transport.",
-    bio: "Manas leads on-ground operations in Guwahati, double-checking device categories and safety tags.",
-    highlight: "Helped streamline logistics for the North East pilot chapter.",
-  },
-  {
-    id: "akansha",
-    name: "Akansha",
-    role: "Member",
-    grade: "Grade VI",
-    school: "Vagdevi Vilas School",
+    id: "nandhan",
+    name: "Nandhan",
+    role: "Impact Analyst",
+    grade: "Grade VII",
+    school: "Bangalore International Academy",
     location: "Bengaluru, Karnataka",
-    summary: "Works with Vivaan to mentor eco-club newcomers and keep recycling streaks going.",
-    bio: "Akansha pairs students for weekly buddy tasks so sustainability becomes a shared routine.",
-    highlight: "Co-created the buddy checklist now adopted by junior clubs.",
+    summary: "Transforms collection data into dashboards that show real climate impact.",
+    bio: "Nandhan compiles weekly reports, validates weights, and shares results with chapters to keep the momentum high.",
+    highlight: "Introduced impact scorecards that volunteers now review after every drive.",
   },
 ];
 
 const leaderboard: Leader[] = [
-  { id: "1", name: "Samaira Rao", ewaste: "61 kg", points: 980 },
-  { id: "2", name: "Arjun Mehta", ewaste: "48 kg", points: 905 },
-  { id: "3", name: "Mehak Sood", ewaste: "44 kg", points: 860 },
-  { id: "4", name: "Vedant Pillai", ewaste: "39 kg", points: 790 },
-  { id: "5", name: "Isha Fernandes", ewaste: "32 kg", points: 725 },
+  { id: "leader-suhit", rank: 1, name: "Suhit", ewaste: "16 Kgs", points: 160 },
+  { id: "leader-aradhya", rank: 2, name: "Aradhya", ewaste: "15 Kgs", points: 150 },
+  { id: "leader-pranish", rank: 3, name: "Pranish", ewaste: "10 kgs", points: 100 },
+  { id: "leader-nandan", rank: 3, name: "Nandan", ewaste: "10 kgs", points: 100 },
+  { id: "leader-utkarsh", rank: 5, name: "Utkarsh", ewaste: "5 Kgs", points: 50 },
 ];
 
 const NGreenArmy = () => {
@@ -246,9 +236,9 @@ const NGreenArmy = () => {
           </div>
 
           <ol className="mt-6 space-y-4">
-            {leaderboard.map((leader, index) => {
+            {leaderboard.map((leader) => {
               const progress = Math.round((leader.points / maxPoints) * 100);
-              const isTopThree = index < 3;
+              const isTopThree = leader.rank <= 3;
               return (
                 <li
                   key={leader.id}
@@ -263,7 +253,7 @@ const NGreenArmy = () => {
                       isTopThree ? "bg-primary text-white" : "border border-primary/25 text-primary"
                     }`}
                   >
-                    #{index + 1}
+                    #{leader.rank}
                   </span>
                   <div className="flex-1">
                     <div className="flex flex-wrap items-center justify-between gap-2">

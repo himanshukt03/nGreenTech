@@ -12,7 +12,7 @@ const JoinUs = () => {
           mb="48px"
         />
 
-        <div className="grid gap-8 md:grid-cols-2">
+        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
           <JoinTile
             eyebrow="Join our volunteer team"
             title="Help us build a sustainable future through environmental action."
@@ -26,15 +26,45 @@ const JoinUs = () => {
             accent="bg-primary/10"
           />
           <JoinTile
-            eyebrow="Partner with us"
-            title="Co-create programmes that mobilise institutions and communities."
+            eyebrow="Institutional partners"
+            title="Empower young changemakers in your campus."
             bulletPoints={[
-              "Design circularity playbooks and sustainability dashboards for campuses.",
-              "Deploy student-led and community-focused stewardship initiatives.",
-              "Collaborate on awareness, events, and impact reporting that scale."
+              "Join hands with NGreenTech to empower young changemakers in your institution.",
+              "Host e-waste collection drives and sustainability workshops.",
+              "Collaborate on awareness programs, research, and innovation projects.",
+              "Access NGreenTech's resources, training, and recognition framework.",
+              "Become a certified nGreenTech Institutional Partner championing responsible recycling.",
+            ]}
+            ctaLabel="Explore Partnership"
+            href="/partner-with-us?type=institutional"
+            accent="bg-white"
+          />
+          <JoinTile
+            eyebrow="Corporate & industry partners"
+            title="Advance your sustainability and EPR goals."
+            bulletPoints={[
+              "Collaborate with NGreenTech to achieve your sustainability and EPR goals.",
+              "Support formal e-waste recycling through CSR-driven initiatives.",
+              "Partner in awareness campaigns, youth programs, and green innovation projects.",
+              "Access verified recycling data, impact reports, and carbon credit insights.",
+              "Be recognized as an nGreenTech Sustainability Partner driving responsible change.",
             ]}
             ctaLabel="Partner With Us"
-            href="/partner-with-us"
+            href="/partner-with-us?type=corporate"
+            accent="bg-primary/5"
+          />
+          <JoinTile
+            eyebrow="Government & policy partnerships"
+            title="Build large-scale circular economy impact."
+            bulletPoints={[
+              "Collaborate with NGreenTech to advance national sustainability and circular economy goals.",
+              "Enable large-scale e-waste management programs through youth and community engagement.",
+              "Support awareness drives, data collection, and recycling initiatives aligned with EPR policies.",
+              "Co-develop frameworks for critical mineral recovery and formal recycling systems.",
+              "Be a Strategic Government Partner with NGreenTech - building a cleaner, greener India.",
+            ]}
+            ctaLabel="Connect With Us"
+            href="/partner-with-us?type=government"
             accent="bg-white"
           />
         </div>

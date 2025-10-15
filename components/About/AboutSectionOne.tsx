@@ -8,7 +8,7 @@ const AboutSectionOne = () => {
           <SectionTitle
             center
             title="About nGreenTech"
-            paragraph="nGreenTech is a youth-led climate action movement founded to help children become eco-warriors. We design programmes that make e-waste collection, recycling, and climate storytelling a joyful part of everyday learning."
+            paragraph="nGreentech is youth led climate action movement founded by children. It unleashes the true potential in students at young age and give them a platform to raise as leaders by making them conduct sustainable initiatives as e- waste collection drives, tree plantations in their neighbourhood, schools etc. At nGreentech, we believe that every student if given right mentorship and platform can rise as powerful  leaders creating their own impact in present and future."
             mb="48px"
           />
 

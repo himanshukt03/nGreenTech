@@ -93,14 +93,14 @@ const Header = () => {
       >
         <div className="container">
           <div className="relative -mx-4 flex items-center justify-between">
-            <div className="w-60 max-w-full px-4 xl:mr-12">
+            <div className="w-64 max-w-full px-4 xl:mr-12">
               <Link href="/" className="header-logo block w-full py-2 lg:py-1">
-                <div className="relative h-12 w-40">
+                <div className="relative h-14 w-48">
                   <Image
                     src="/images/logo/Ngreen-logo.png"
                     alt="nGreenTech logo"
                     fill
-                    sizes="160px"
+                    sizes="192px"
                     className="object-contain"
                     priority
                   />

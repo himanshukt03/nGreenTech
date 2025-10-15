@@ -16,43 +16,37 @@ const Hero = () => {
       {
         id: "sdg-4",
         title: "SDG 4 – Quality Education",
-          description:
-            "Helping students learn about the environment and grow as young leaders.",
+        description: "- Promoting Environmental Education and Leadership Skills in students",
         image: "/images/hero/education.jpg",
       },
       {
         id: "sdg-8",
         title: "SDG 8 – Decent Work & Economic Growth",
-          description:
-            "Encouraging green jobs, innovation, and sustainable entrepreneurship for youth.",
+        description: "- green entrepreneurship & innovation",
         image: "/images/hero/decent-work.webp",
       },
       {
         id: "sdg-11",
         title: "SDG 11 – Sustainable Cities & Communities",
-          description:
-            "Creating cleaner cities through local e-waste collection and recycling projects.",
+        description: "- community level e-waste solutions",
         image: "/images/hero/Sustainable-cities.jpeg",
       },
       {
         id: "sdg-12",
         title: "SDG 12 – Responsible Consumption & Production",
-          description:
-            "Promoting recycling habits and supporting a circular economy for a better future.",
+        description: "- formal recycling & circular economy",
         image: "/images/hero/consumption.webp",
       },
       {
         id: "sdg-13",
         title: "SDG 13 – Climate Action",
-          description:
-            "Reducing pollution and carbon emissions through safe e-waste recovery methods.",
+        description: "- cutting emissions via safe e-waste recovery",
         image: "/images/hero/climate%20action.png",
       },
       {
         id: "sdg-17",
         title: "SDG 17 – Partnerships for the Goals",
-          description:
-            "Working together with schools, companies, and NGOs to build a greener world.",
+        description: "- collaborating with schools, industries & NGOs",
         image: "/images/hero/Partnershipsjpeg.jpeg",
       },
     ],

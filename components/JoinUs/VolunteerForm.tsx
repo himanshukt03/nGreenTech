@@ -119,18 +119,12 @@ const VolunteerForm = () => (
       <h4 className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">
         Documents
       </h4>
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-4">
         <div>
           <label htmlFor="volunteer-id-proof" className={labelClass}>
             ID Proof (Aadhar Card, School ID, etc.)
           </label>
           <input id="volunteer-id-proof" name="idProof" type="file" className={fileFieldClass} required />
-        </div>
-        <div>
-          <label htmlFor="volunteer-parent-consent" className={labelClass}>
-            Parent Consent Form
-          </label>
-          <input id="volunteer-parent-consent" name="parentConsentForm" type="file" className={fileFieldClass} required />
         </div>
       </div>
       <div className={consentBoxClass}>
