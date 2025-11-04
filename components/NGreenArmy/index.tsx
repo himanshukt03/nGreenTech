@@ -11,13 +11,10 @@ type Member = {
   role: string;
   grade: string;
   school: string;
-  location: string;
+  location?: string;
   phone?: string;
   email?: string;
   summary: string;
-  bio: string;
-  highlight?: string;
-  mediaUrl?: string;
   image?: string;
 };
 
@@ -33,116 +30,90 @@ const members: Member[] = [
   {
     id: "nayan-adithya",
     name: "Nayan Adithya Tangutooru",
-    role: "Founder & CEO",
+    role: "Founder",
     grade: "Grade V",
-    school: "Bangalore International Academy",
-    location: "Bengaluru, Karnataka",
+    school: "Bangalore International Academy, Bengaluru",
     phone: "7730041280",
     email: "tnayanadithya@gmail.com",
-    summary: "Leads nGreenTech's youth-led movement and inspires peers to lead climate missions across India.",
-    bio: "Nayan founded nGreenTech to prove children can be powerful climate leaders. He designs programmes, speaks at global forums, and mentors every squad that joins the mission.",
-  highlight: "Chaired international sessions including Texas State University's ISF JUNICORN showcase.",
-    mediaUrl: "https://www.youtube.com/watch?v=ApniMHLPgLo",
+    summary: "Phone: 7730041280 | Email: tnayanadithya@gmail.com",
     image: getImagePath("/images/about/nayan_adithya.jpg"),
   },
   {
     id: "utkarsh",
     name: "Utkarsh",
-    role: "Operations Captain",
+    role: "Member",
     grade: "Grade VI",
-    school: "Chrysalis High",
-    location: "Bengaluru, Karnataka",
-    summary: "Champions device auditing drives and keeps campus teams focused on safe recycling standards.",
-    bio: "Utkarsh leads weekly peer briefings to catalogue gadgets for drop-off, coordinates logistics, and ensures every collection follows safety-first protocols.",
-    highlight: "Designed the labelling workflow now adopted by partnering schools.",
+    school: "Chrysalis High, Bengaluru",
+    summary: "Member",
+    image: getImagePath("/images/about/utkarsh.webp"),
   },
   {
     id: "praneesh",
     name: "Praneesh",
-    role: "Logistics Lead",
+    role: "Member",
     grade: "Grade VII",
-    school: "Whitefield Global School",
-    location: "Bengaluru, Karnataka",
-    summary: "Coordinates volunteer rosters and ensures every drive runs with clockwork precision.",
-    bio: "Praneesh manages sign-ups, routing, and inventory tracking so that each neighbourhood collection hits its targets without waste.",
-    highlight: "Introduced barcode tracking for collected devices to improve transparency.",
+    school: "Whitefield Global School, Bengaluru",
+    summary: "Member",
+    image: getImagePath("/images/about/pranish.webp"),
   },
   {
-    id: "aradhya",
-    name: "Aradhya",
-    role: "Storytelling Champion",
+    id: "aaradhya",
+    name: "Aaradhya Chappali",
+    role: "Member",
     grade: "Grade V",
-    school: "AHPS",
-    location: "Bengaluru, Karnataka",
-    summary: "Turns every climate initiative into a story that moves classmates and communities.",
-    bio: "Aradhya documents drive highlights, hosts assemblies, and produces short films that keep sustainability conversations vibrant in schools.",
-    highlight: "Directed mini-documentaries celebrating volunteer-led repair missions.",
+    school: "AHPS, Bengaluru",
+    summary: "Member",
+    image: getImagePath("/images/about/aaradhya.webp"),
   },
   {
-    id: "suhit",
-    name: "Suhit",
-    role: "Collection Strategist",
-    grade: "Grade VI",
-    school: "Bangalore International Academy",
-    location: "Bengaluru, Karnataka",
-    summary: "Builds neighbourhood action plans that bring record e-waste collections every month.",
-    bio: "Suhit coaches junior squads on doorstep conversations, ensuring families understand why safe recycling matters and how to participate.",
-    highlight: "Achieved the highest monthly recovery with 16 Kgs collected in a single drive.",
-  },
-  {
-    id: "vynavi",
-    name: "Vynavi",
-    role: "Community Connector",
-    grade: "Grade IV",
-    school: "Vagdevi Vilas School",
-    location: "Bengaluru, Karnataka",
-    summary: "Brings families, schools, and local businesses together for climate-positive events.",
-    bio: "Vynavi curates green pledges, coordinates plantation drives, and keeps younger buddies energised with creative challenges.",
-    highlight: "Mobilised three neighbourhoods for a week-long segregation marathon.",
-  },
-  {
-    id: "josith",
-    name: "Josith",
-    role: "Regional Lead",
+    id: "joshith",
+    name: "Joshith Eswar",
+    role: "Member",
     grade: "Grade V",
-    school: "Maria Public School",
-    location: "Guwahati, Assam",
-    summary: "Launches regional awareness rallies and partners with civic teams for safe collection.",
-    bio: "Josith builds collaborations with local groups in Assam to open accessible drop-off stations and share circular economy know-how.",
-    highlight: "Scaled the city's first children's climate pledge wall.",
+    school: "Maria Public School, Guwahati, Assam",
+    summary: "Member",
+    image: getImagePath("/images/about/joshith-eswar.webp"),
   },
   {
     id: "aadya",
     name: "Aadya",
-    role: "Design & Outreach",
+    role: "Member",
     grade: "Grade VII",
-    school: "National Public School",
-    location: "Bengaluru, Karnataka",
-    summary: "Designs posters and social snippets that rally classmates for every drive.",
-    bio: "Aadya curates digital toolkits, writes quick explainers, and keeps chapters aligned on campaign messaging.",
-    highlight: "Built a template library now used across two chapters.",
+    school: "National Public School, Bengaluru",
+    summary: "Member",
+    image: getImagePath("/images/about/aadya.webp"),
+  },
+  {
+    id: "suhit",
+    name: "Suhit",
+    role: "Member",
+    grade: "Grade VI",
+    school: "Bangalore International Academy, Bengaluru",
+    summary: "Member",
+  },
+  {
+    id: "vynavi",
+    name: "Vynavi",
+    role: "Member",
+    grade: "Grade IV",
+    school: "Vagdevi Vilas School, Bengaluru",
+    summary: "Member",
   },
   {
     id: "adarsh-rathi",
     name: "Adarsh Rathi",
-    role: "Innovation Scout",
+    role: "Member",
     grade: "Grade VIII",
-    school: "Bangalore International Academy",
-    location: "Bengaluru, Karnataka",
-    summary: "Explores new reuse pathways for refurbished gadgets and components.",
-    bio: "Adarsh experiments with upcycling ideas, tracks repair success stories, and mentors peers on responsible tech usage.",
-    highlight: "Piloted a device donation loop connecting students with NGOs.",
+    school: "Bangalore International Academy, Bengaluru",
+    summary: "Member",
   },
   {
     id: "nandhan",
     name: "Nandhan",
-    role: "Impact Analyst",
+    role: "Member",
     grade: "Grade VII",
-    school: "Bangalore International Academy",
-    location: "Bengaluru, Karnataka",
-    summary: "Transforms collection data into dashboards that show real climate impact.",
-    bio: "Nandhan compiles weekly reports, validates weights, and shares results with chapters to keep the momentum high.",
-    highlight: "Introduced impact scorecards that volunteers now review after every drive.",
+    school: "Bangalore International Academy, Bengaluru",
+    summary: "Member",
   },
 ];
 
@@ -168,20 +139,20 @@ const NGreenArmy = () => {
           mb="56px"
         />
 
-        <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {members.map((member) => (
             <article
               key={member.id}
-              className="flex h-full flex-col rounded-[32px] border border-primary/15 bg-white/95 p-6 shadow-two transition hover:-translate-y-1 hover:shadow-one"
+              className="group flex h-full flex-col overflow-hidden rounded-3xl border border-primary/10 bg-white/95 shadow-[0_14px_40px_-18px_rgba(13,99,38,0.45)] transition-transform duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_20px_45px_-16px_rgba(27,158,63,0.58)]"
             >
-              <div className="relative overflow-hidden rounded-3xl border border-primary/15 bg-primary/5">
+              <div className="relative overflow-hidden rounded-b-[36px] rounded-t-3xl border-b border-primary/5 bg-gradient-to-br from-primary/10 via-white to-primary/5">
                 <div className="relative aspect-[4/3] w-full">
                   {member.image ? (
                     <Image
                       src={member.image}
                       alt={member.name}
                       fill
-                      className="object-cover"
+                      className="object-cover transition duration-500 group-hover:scale-[1.05]"
                       sizes="(min-width: 1280px) 260px, (min-width: 768px) 45vw, 90vw"
                     />
                   ) : (
@@ -195,28 +166,23 @@ const NGreenArmy = () => {
                   )}
                 </div>
               </div>
-              <div className="mt-6 flex flex-1 flex-col gap-3">
-                <div>
-                  <h4 className="text-lg font-semibold text-dark">{member.name}</h4>
-                  <p className="text-sm font-medium text-primary">{member.role}</p>
+              <div className="flex flex-1 flex-col gap-4 px-6 pb-6 pt-5">
+                <div className="flex flex-col gap-1">
+                  <h4 className="text-xl font-semibold text-dark transition group-hover:text-primary">{member.name}</h4>
+                  <p className="text-xs font-semibold uppercase tracking-[0.35em] text-primary">{member.role}</p>
                 </div>
-                <p className="text-xs uppercase tracking-[0.25em] text-body-color">
+                <div className="rounded-2xl bg-primary/5 px-4 py-3 text-xs font-medium uppercase tracking-[0.28em] text-primary/80">
                   {member.grade} • {member.school}
-                </p>
-                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary/70">
-                  {member.location}
-                </p>
-                <p className="text-sm leading-relaxed text-body-color min-h-[72px]">
-                  {member.summary}
-                </p>
-                {member.highlight && (
-                  <p className="text-sm font-semibold text-dark">{member.highlight}</p>
+                </div>
+                {member.location && (
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/60">{member.location}</p>
                 )}
+                <p className="text-sm leading-relaxed text-body-color">{member.summary}</p>
               </div>
               <button
                 type="button"
                 onClick={() => setActiveMember(member)}
-                className="mt-6 inline-flex w-full items-center justify-center rounded-full border border-primary px-5 py-2 text-sm font-semibold text-primary transition hover:bg-primary hover:text-white"
+                className="mx-6 mb-6 inline-flex items-center justify-center rounded-full bg-primary px-6 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-primary/90"
               >
                 Know More
               </button>
@@ -295,8 +261,8 @@ const NGreenArmy = () => {
               >
                 <span aria-hidden="true">×</span>
               </button>
-              <div className="flex flex-col gap-4 sm:flex-row">
-                <div className="relative h-[120px] w-[120px] overflow-hidden rounded-3xl border border-primary/15 bg-primary/5">
+              <div className="flex flex-col gap-6 sm:flex-row">
+                <div className="relative h-[140px] w-[140px] overflow-hidden rounded-3xl border border-primary/15 bg-primary/5 shadow-[0_12px_30px_-18px_rgba(27,158,63,0.6)]">
                   {activeMember.image ? (
                     <Image src={activeMember.image} alt={activeMember.name} fill className="object-cover" />
                   ) : (
@@ -310,18 +276,20 @@ const NGreenArmy = () => {
                   )}
                 </div>
                 <div>
-                  <h4 className="text-xl font-semibold text-dark">{activeMember.name}</h4>
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary/80">
+                  <h4 className="text-2xl font-semibold text-dark">{activeMember.name}</h4>
+                  <p className="mt-1 text-xs font-semibold uppercase tracking-[0.35em] text-primary">
                     {activeMember.role}
                   </p>
-                  <p className="mt-2 text-sm font-medium text-body-color">
+                  <p className="mt-3 text-sm font-semibold text-body-color">
                     {activeMember.grade} • {activeMember.school}
                   </p>
-                  <p className="text-sm text-body-color">{activeMember.location}</p>
+                  {activeMember.location && (
+                    <p className="text-xs font-semibold uppercase tracking-[0.28em] text-primary/60">{activeMember.location}</p>
+                  )}
                   {activeMember.phone && (
                     <p className="mt-3 text-sm text-body-color">
                       <span className="font-semibold text-dark">Phone:</span>{" "}
-                      <a href={`tel:${activeMember.phone}`} className="text-primary hover:underline">
+                      <a href={`tel:${activeMember.phone}`} className="text-primary underline-offset-4 hover:underline">
                         {activeMember.phone}
                       </a>
                     </p>
@@ -329,27 +297,14 @@ const NGreenArmy = () => {
                   {activeMember.email && (
                     <p className="text-sm text-body-color">
                       <span className="font-semibold text-dark">Email:</span>{" "}
-                      <a href={`mailto:${activeMember.email}`} className="text-primary hover:underline">
+                      <a href={`mailto:${activeMember.email}`} className="text-primary underline-offset-4 hover:underline">
                         {activeMember.email}
                       </a>
                     </p>
                   )}
                 </div>
               </div>
-              <p className="mt-4 text-sm leading-relaxed text-body-color">{activeMember.bio}</p>
-              {activeMember.highlight && (
-                <p className="mt-3 text-sm font-semibold text-dark">{activeMember.highlight}</p>
-              )}
-              {activeMember.mediaUrl && (
-                <a
-                  href={activeMember.mediaUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-4 inline-flex items-center rounded-full bg-primary px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-primary/90"
-                >
-                  View Story
-                </a>
-              )}
+              <p className="mt-6 rounded-2xl bg-primary/5 px-5 py-4 text-sm leading-relaxed text-body-color">{activeMember.summary}</p>
             </div>
           </div>
         )}
