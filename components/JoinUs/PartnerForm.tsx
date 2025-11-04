@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable react/no-unescaped-entities */
 
 import { FormEvent, useState } from "react";
 import toast from "react-hot-toast";
@@ -85,7 +86,7 @@ const EducationalInstitutionForm = () => {
 
       <header className="space-y-3">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary">
-          NGreenTech Collaboration Form  Educational Institutions
+          NGreenTech Collaboration Form For Educational Institutions
         </p>
         <h3 className="text-2xl font-semibold text-dark">Empower young changemakers on your campus</h3>
         <p className="text-sm text-body-color">
@@ -337,7 +338,7 @@ const EducationalInstitutionForm = () => {
 const OrganizationCollaborationForm = () => {
   const { isSubmitting, handleSubmit } = useGetformSubmit(
     "organization-collaboration",
-    "Thank you for your interest in partnering with NGreenTech! Our team will review your submission and get in touch within 57 working days."
+    "Thank you for your interest in partnering with NGreenTech! Our team will review your submission and get in touch within 5-7 working days."
   );
 
   return (
@@ -351,7 +352,7 @@ const OrganizationCollaborationForm = () => {
 
       <header className="space-y-3">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary">
-          NGreenTech Collaboration / Sponsorship Form  Organizations & Industries
+          NGreenTech Collaboration & Sponsorship Form For Organizations & Industries
         </p>
         <h3 className="text-2xl font-semibold text-dark">Co-create scalable sustainability impact</h3>
         <p className="text-sm text-body-color">

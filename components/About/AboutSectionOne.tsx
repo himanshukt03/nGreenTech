@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type AboutSectionOneProps = {
   showVideo?: boolean;
 };
@@ -47,11 +49,14 @@ const AboutSectionOne = ({ showVideo = true }: AboutSectionOneProps) => {
 
                 {/* Right Column: Image */}
                 <figure className="group relative mx-auto w-full max-w-[200px] overflow-hidden rounded-[24px] border border-primary/15 bg-primary/5 shadow-two sm:mx-0 sm:max-w-[240px] md:max-w-[280px]">
-                  <img
+                  <Image
                     src="/images/about/nayan_adithya.jpg"
                     alt="Portrait of Nayan Adithya Tangutooru"
+                    width={280}
+                    height={350}
                     className="aspect-[4/5] w-full object-cover transition duration-700 group-hover:scale-105"
-                    loading="lazy"
+                    sizes="(min-width: 768px) 280px, 200px"
+                    priority={showVideo}
                   />
                 </figure>
               </div>

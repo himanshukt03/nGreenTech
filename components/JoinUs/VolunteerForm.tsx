@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable react/no-unescaped-entities */
 
 import { FormEvent, useState } from "react";
 import toast from "react-hot-toast";
@@ -236,7 +237,7 @@ const VolunteerForm = () => {
         <div className="grid gap-4 md:grid-cols-2">
           <div>
             <label htmlFor="consent-parent-name" className={labelClass}>
-              Parent's Name
+              Parent&apos;s Name
             </label>
             <input id="consent-parent-name" name="consentParentName" className={fieldClass} />
           </div>
@@ -264,7 +265,7 @@ const VolunteerForm = () => {
             required
             className="mt-1 h-4 w-4 rounded border-primary/40 text-primary focus:ring-primary"
           />
-          <span>I agree to follow NGreenTech's code of conduct and environmental ethics.</span>
+          <span>I agree to follow NGreenTech&apos;s code of conduct and environmental ethics.</span>
         </label>
         <div className="grid gap-4 md:grid-cols-2">
           <div>

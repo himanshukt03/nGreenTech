@@ -120,3 +120,5 @@ const PastEvents = () => {
     </section>
   );
 };
+
+export default PastEvents;

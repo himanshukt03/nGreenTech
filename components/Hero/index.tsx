@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 type Slide = {
   id: string;
@@ -10,58 +10,79 @@ type Slide = {
   image: string;
 };
 
-const Hero = () => {
-  const slides = useMemo<Slide[]>(
-    () => [
-      {
-        id: "sdg-4",
-        title: "SDG 4 – Quality Education",
-        description: "- Promoting Environmental Education and Leadership Skills in students",
-        image: "/images/hero/education.jpg",
-      },
-      {
-        id: "sdg-8",
-        title: "SDG 8 – Decent Work & Economic Growth",
-        description: "- green entrepreneurship & innovation",
-        image: "/images/hero/decent-work.jpg",
-      },
-      {
-        id: "sdg-11",
-        title: "SDG 11 – Sustainable Cities & Communities",
-        description: "- community level e-waste solutions",
-        image: "/images/hero/Sustainable-cities.jpeg",
-      },
-      {
-        id: "sdg-12",
-        title: "SDG 12 – Responsible Consumption & Production",
-        description: "- formal recycling & circular economy",
-        image: "/images/hero/consumption.webp",
-      },
-      {
-        id: "sdg-13",
-        title: "SDG 13 – Climate Action",
-        description: "- cutting emissions via safe e-waste recovery",
-        image: "/images/hero/climate%20action.png",
-      },
-      {
-        id: "sdg-17",
-        title: "SDG 17 – Partnerships for the Goals",
-        description: "- collaborating with schools, industries & NGOs",
-        image: "/images/hero/Partnershipsjpeg.jpeg",
-      },
-    ],
-    [],
-  );
+const slides: Slide[] = [
+  {
+    id: "sdg-4",
+    title: "SDG 4 – Quality Education",
+    description: "Promoting environmental education and leadership skills in students.",
+    image: "/images/hero/education.jpg",
+  },
+  {
+    id: "sdg-8",
+    title: "SDG 8 – Decent Work & Economic Growth",
+    description: "Advancing green entrepreneurship and innovation for young leaders.",
+    image: "/images/hero/decent-work.jpg",
+  },
+  {
+    id: "sdg-11",
+    title: "SDG 11 – Sustainable Cities & Communities",
+    description: "Building e-waste solutions with neighbourhoods and civic bodies.",
+    image: "/images/hero/Sustainable-cities.jpeg",
+  },
+  {
+    id: "sdg-12",
+    title: "SDG 12 – Responsible Consumption & Production",
+    description: "Scaling formal recycling and circular economy practices.",
+    image: "/images/hero/consumption.jpg",
+  },
+  {
+    id: "sdg-13",
+    title: "SDG 13 – Climate Action",
+    description: "Cutting emissions through safe and traceable e-waste recovery.",
+    image: "/images/hero/climate-action.jpg",
+  },
+  {
+    id: "sdg-17",
+    title: "SDG 17 – Partnerships for the Goals",
+    description: "Collaborating with schools, industries, and NGOs to amplify impact.",
+    image: "/images/hero/Partnershipsjpeg.jpeg",
+  },
+];
 
+const Hero = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [shouldAutoRotate, setShouldAutoRotate] = useState(false);
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updatePreference = () => setShouldAutoRotate(!mediaQuery.matches);
+
+    updatePreference();
+
+    if (typeof mediaQuery.addEventListener === "function") {
+      mediaQuery.addEventListener("change", updatePreference);
+      return () => mediaQuery.removeEventListener("change", updatePreference);
+    }
+
+    mediaQuery.addListener(updatePreference);
+    return () => mediaQuery.removeListener(updatePreference);
+  }, []);
+
+  useEffect(() => {
+    if (!shouldAutoRotate) {
+      return undefined;
+    }
+
+    const timer = window.setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % slides.length);
     }, 7000);
 
-    return () => clearInterval(timer);
-  }, [slides.length]);
+    return () => window.clearInterval(timer);
+  }, [shouldAutoRotate]);
+
+  const handleIndicatorSelect = (index: number) => {
+    setActiveIndex(index);
+  };
 
   const activeSlide = slides[activeIndex];
 
@@ -123,15 +144,19 @@ const Hero = () => {
           {slides.map((slide, index) => {
             const isActive = index === activeIndex;
             return (
-              <span
+              <button
                 key={slide.id}
-                aria-hidden="true"
+                type="button"
+                onClick={() => handleIndicatorSelect(index)}
                 className={
                   isActive
                     ? "h-2 w-8 rounded-full bg-white"
-                    : "h-2 w-2 rounded-full bg-white/60"
+                    : "h-2 w-2 rounded-full bg-white/60 transition hover:bg-white/80"
                 }
-              />
+                aria-label={`Show ${slide.title}`}
+              >
+                <span className="sr-only">{`Activate ${slide.title}`}</span>
+              </button>
             );
           })}
         </div>

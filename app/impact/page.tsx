@@ -15,7 +15,7 @@ const ImpactPage = () => {
         eyebrow="Results"
         title="Impact"
         description="From kilograms of e-waste recovered to volunteers activated, discover how student-led action is translating into measurable climate outcomes."
-        image="/images/hero/climate%20action.png"
+        image="/images/hero/climate-action.jpg"
         actions={[{ label: "Read success stories", href: "/ngreen-army" }]}
       />
       <Impact />
