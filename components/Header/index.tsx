@@ -29,60 +29,11 @@ const Header = () => {
     };
   }, []);
 
-  const [activeHash, setActiveHash] = useState("#home");
-  useEffect(() => {
-    const handleHashChange = () => {
-      if (typeof window !== "undefined") {
-        setActiveHash(window.location.hash || "#home");
-      }
-    };
-
-    handleHashChange();
-    window.addEventListener("hashchange", handleHashChange);
-    return () => {
-      window.removeEventListener("hashchange", handleHashChange);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-
-    const sectionIds = menuData
-      .map((item) => {
-        const hashIndex = item.path.indexOf("#");
-        if (hashIndex === -1) {
-          return null;
-        }
-        return item.path.substring(hashIndex + 1);
-      })
-      .filter((id): id is string => Boolean(id));
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleEntry = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-        if (visibleEntry) {
-          setActiveHash(`#${visibleEntry.target.id}`);
-        }
-      },
-      { threshold: 0.4 },
-    );
-
-    sectionIds.forEach((id) => {
-      const element = document.getElementById(id);
-      if (element) {
-        observer.observe(element);
-      }
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
   const usePathName = usePathname();
+
+  useEffect(() => {
+    setNavbarOpen(false);
+  }, [usePathName]);
 
   return (
     <>
@@ -141,14 +92,10 @@ const Header = () => {
                 >
                   <ul className="block lg:flex lg:space-x-12">
                     {menuData.map((menuItem, index) => {
-                      const hashIndex = menuItem.path.indexOf("#");
-                      const targetHash =
-                        hashIndex !== -1
-                          ? menuItem.path.substring(hashIndex)
-                          : menuItem.path;
-                      const isActive =
-                        (hashIndex !== -1 && targetHash === activeHash) ||
-                        (targetHash === "#home" && usePathName === "/");
+                      const isHome = menuItem.path === "/";
+                      const isActive = isHome
+                        ? usePathName === "/"
+                        : usePathName.startsWith(menuItem.path);
 
                       return (
                         <li key={index} className="group relative">
@@ -161,9 +108,6 @@ const Header = () => {
                             }`}
                             onClick={() => {
                               setNavbarOpen(false);
-                              if (hashIndex !== -1) {
-                                setActiveHash(targetHash);
-                              }
                             }}
                           >
                             {menuItem.title}
@@ -176,10 +120,10 @@ const Header = () => {
               </div>
               <div className="hidden items-center justify-end pr-16 lg:flex lg:pr-0">
                 <Link
-                  href="/#join-us"
+                  href="/join-us"
                   className="rounded-full border border-primary px-6 py-2 text-sm font-semibold uppercase tracking-widest text-primary transition hover:bg-primary hover:text-white"
                 >
-                  Register
+                  Join us
                 </Link>
               </div>
             </div>

@@ -23,7 +23,7 @@ const Hero = () => {
         id: "sdg-8",
         title: "SDG 8 – Decent Work & Economic Growth",
         description: "- green entrepreneurship & innovation",
-        image: "/images/hero/decent-work.webp",
+        image: "/images/hero/decent-work.jpg",
       },
       {
         id: "sdg-11",

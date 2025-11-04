@@ -1,23 +1,26 @@
 import AboutSectionOne from "@/components/About/AboutSectionOne";
 import AboutSectionTwo from "@/components/About/AboutSectionTwo";
-import Breadcrumb from "@/components/Common/Breadcrumb";
+import PageHero from "@/components/Common/PageHero";
 
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Page | Free Next.js Template for Startup and SaaS",
-  description: "This is About Page for Startup Nextjs Template",
-  // other metadata
+  title: "About | nGreenTech",
+  description:
+    "Learn about nGreenTech's youth-led mission, meet our founder, and explore the vision and mission powering our climate action programmes.",
 };
 
 const AboutPage = () => {
   return (
     <>
-      <Breadcrumb
-        pageName="About Page"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius eros eget sapien consectetur ultrices. Ut quis dapibus libero."
+      <PageHero
+        eyebrow="Our Story"
+        title="About nGreenTech"
+        description="nGreenTech is a youth-led climate action movement founded by children. Discover the spark behind our mission, meet the founder, and learn how we are shaping circular economies one school at a time."
+        image="/images/about/about-image-2-dark.svg"
+        actions={[{ label: "Meet the nGreenArmy", href: "/ngreen-army" }]}
       />
-      <AboutSectionOne />
+      <AboutSectionOne showVideo={false} />
       <AboutSectionTwo />
     </>
   );
