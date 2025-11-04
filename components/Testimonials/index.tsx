@@ -1,4 +1,3 @@
-import { getImagePath } from "@/lib/utils";
 import { Testimonial } from "@/types/testimonial";
 import SectionTitle from "../Common/SectionTitle";
 import SingleTestimonial from "./SingleTestimonial";
@@ -6,30 +5,25 @@ import SingleTestimonial from "./SingleTestimonial";
 const getTestimonialData = (): Testimonial[] => [
   {
     id: 1,
-    name: "Sruthi Kannan",
-    designation: "Principal, Green Oaks School",
+    name: "Manisha Salian",
+    designation: "Social Media Strategist @ SSSUHE",
     content:
-      "nGreenTech turned sustainability into something our learners look forward to each week. The curriculum is grounded, measurable, and joyful.",
-    image: getImagePath("/images/testimonials/auth-01.png"),
-    star: 5,
+      "Congratulations to Nayan and the NGreenTech team! Truly inspiring to see youth leading the way in sustainability. This milestone at SDG Summit 2025 shows how vision and impact have no age limits. Wishing more success to the NGreen Army on their green journey!",
   },
   {
     id: 2,
-    name: "Rahul Dev",
-    designation: "CSR Head, Renew Earth Industries",
+    name: "J A Chowdary (JA)",
+    designation:
+      "Founder of ISF & Junicorn 100K | Former Special Chief Secretary & IT Advisor to Chief Minister of Andhra Pradesh",
     content:
-      "Working with the nGreenArmy gave our CSR programme clear outcomes – e-waste traceability, robust reporting, and youth leadership in one package.",
-    image: getImagePath("/images/testimonials/auth-02.png"),
-    star: 5,
+      "Inspiring work, Nayan and nGreenTech. Proud to see young Junicorns leading the way in building a cleaner, greener Bharat.",
   },
   {
     id: 3,
-    name: "Ananya Joshi",
-    designation: "nGreenArmy Volunteer",
+    name: "Ramesh VRAM",
+    designation: "Director - Client Success, Innovation ScaleUp Advisors Pvt Ltd",
     content:
-      "I joined to attend a single clean-up and stayed back to lead my campus cell. The constant mentorship keeps us accountable and excited.",
-    image: getImagePath("/images/testimonials/auth-03.png"),
-    star: 5,
+      "nGreenTech what a great initiative to protect our mother earth. Nice to know Nayan, his friends, and school children are driving this transformative initiative.",
   },
 ];
 
