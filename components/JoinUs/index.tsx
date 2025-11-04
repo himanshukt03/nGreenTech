@@ -3,7 +3,7 @@ import SectionTitle from "../Common/SectionTitle";
 
 const JoinUs = () => {
   return (
-    <section id="join-us" className="py-16 md:py-20 lg:py-28">
+  <section id="join-us" className="py-16 md:py-20 lg:py-28">
       <div className="container">
         <SectionTitle
           center
@@ -12,10 +12,10 @@ const JoinUs = () => {
           mb="48px"
         />
 
-        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
+  <div className="grid gap-8 md:grid-cols-2">
           <JoinTile
-            eyebrow="Join our volunteer team"
-            title="Help us build a sustainable future through environmental action."
+            eyebrow="Join Our Volunteer Team"
+            title="Help us make the planet greener."
             bulletPoints={[
               "Lead e-waste drives, awareness campaigns, and research missions.",
               "Access training, toolkits, and squads shaped around your strengths.",
@@ -26,8 +26,8 @@ const JoinUs = () => {
             accent="bg-primary/10"
           />
           <JoinTile
-            eyebrow="Institutional partners"
-            title="Empower young changemakers in your campus."
+            eyebrow="Institutional Partners"
+            title="Empower changemakers in your campus."
             bulletPoints={[
               "Join hands with NGreenTech to empower young changemakers in your institution.",
               "Host e-waste collection drives and sustainability workshops.",
@@ -36,37 +36,39 @@ const JoinUs = () => {
               "Become a certified nGreenTech Institutional Partner championing responsible recycling.",
             ]}
             ctaLabel="Explore Partnership"
-            href="/partner-with-us?type=institutional"
+            href="/partner-with-us?type=institution"
             accent="bg-white"
           />
-          <JoinTile
-            eyebrow="Corporate & industry partners"
-            title="Advance your sustainability and EPR goals."
-            bulletPoints={[
-              "Collaborate with NGreenTech to achieve your sustainability and EPR goals.",
-              "Support formal e-waste recycling through CSR-driven initiatives.",
-              "Partner in awareness campaigns, youth programs, and green innovation projects.",
-              "Access verified recycling data, impact reports, and carbon credit insights.",
-              "Be recognized as an nGreenTech Sustainability Partner driving responsible change.",
-            ]}
-            ctaLabel="Partner With Us"
-            href="/partner-with-us?type=corporate"
-            accent="bg-primary/5"
-          />
-          <JoinTile
-            eyebrow="Government & policy partnerships"
-            title="Build large-scale circular economy impact."
-            bulletPoints={[
-              "Collaborate with NGreenTech to advance national sustainability and circular economy goals.",
-              "Enable large-scale e-waste management programs through youth and community engagement.",
-              "Support awareness drives, data collection, and recycling initiatives aligned with EPR policies.",
-              "Co-develop frameworks for critical mineral recovery and formal recycling systems.",
-              "Be a Strategic Government Partner with NGreenTech - building a cleaner, greener India.",
-            ]}
-            ctaLabel="Connect With Us"
-            href="/partner-with-us?type=government"
-            accent="bg-white"
-          />
+          <div className="grid gap-8 md:col-span-2 md:grid-cols-2">
+            <JoinTile
+              eyebrow="Corporate & Industry"
+              title="Advance your sustainability and EPR goals."
+              bulletPoints={[
+                "Collaborate with NGreenTech to achieve your sustainability and EPR goals.",
+                "Support formal e-waste recycling through CSR-driven initiatives.",
+                "Partner in awareness campaigns, youth programs, and green innovation projects.",
+                "Access verified recycling data, impact reports, and carbon credit insights.",
+                "Be recognized as an nGreenTech Sustainability Partner driving responsible change.",
+              ]}
+              ctaLabel="Partner With Us"
+              href="/partner-with-us?type=organization"
+              accent="bg-primary/5"
+            />
+            <JoinTile
+              eyebrow="Government & Policy"
+              title="Build large-scale circular economy impact."
+              bulletPoints={[
+                "Collaborate with NGreenTech to advance national sustainability and circular economy goals.",
+                "Enable large-scale e-waste management programs through youth and community engagement.",
+                "Support awareness drives, data collection, and recycling initiatives aligned with EPR policies.",
+                "Co-develop frameworks for critical mineral recovery and formal recycling systems.",
+                "Be a Strategic Government Partner with NGreenTech - building a cleaner, greener India.",
+              ]}
+              ctaLabel="Connect With Us"
+              href="/partner-with-us?type=government"
+              accent="bg-white"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -84,23 +86,33 @@ type JoinTileProps = {
 
 const JoinTile = ({ eyebrow, title, bulletPoints, ctaLabel, href, accent }: JoinTileProps) => {
   return (
-    <div className={`flex h-full flex-col justify-between rounded-3xl border border-primary/15 ${accent} p-8 shadow-btn-light`}>
-      <div>
-        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary">{eyebrow}</p>
-        <h3 className="mt-4 text-2xl font-semibold text-dark">{title}</h3>
-        <ul className="mt-5 space-y-3 text-sm text-body-color">
+    <div
+      className={`relative flex h-full flex-col justify-between overflow-hidden rounded-[34px] border border-primary/15 ${accent} p-10 shadow-btn-light transition hover:-translate-y-1 hover:shadow-one`}
+    >
+      <div className="pointer-events-none absolute inset-0 opacity-80">
+        <div className="absolute -left-10 top-10 h-36 w-36 rounded-full border border-primary/20 bg-primary/10 blur-3xl" />
+        <div className="absolute -bottom-14 -right-10 h-40 w-40 rounded-full border border-primary/20 bg-white/60 blur-2xl" />
+      </div>
+
+      <div className="relative z-[1] space-y-6">
+        <p className="inline-flex items-center rounded-full border border-primary/25 bg-primary/10 px-4 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-primary">
+          {eyebrow}
+        </p>
+        <h3 className="text-[1.75rem] font-semibold leading-tight text-dark">{title}</h3>
+        <ul className="space-y-4 text-sm leading-relaxed text-body-color">
           {bulletPoints.map((point) => (
             <li key={point} className="flex items-start gap-3">
-              <span className="mt-2 h-1 w-12 rounded-full bg-primary/40" />
-              <span>{point}</span>
+              <span className="mt-2 inline-flex h-1 w-10 rounded-full bg-primary/40" />
+              <span className="flex-1">{point}</span>
             </li>
           ))}
         </ul>
       </div>
-      <div className="mt-8">
+
+      <div className="relative z-[1] mt-10">
         <Link
           href={href}
-          className="inline-flex w-full items-center justify-center rounded-full border border-primary bg-primary px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-primary/90"
+          className="inline-flex w-full items-center justify-center rounded-full border border-primary bg-primary px-8 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-white transition hover:bg-primary/90"
         >
           {ctaLabel}
         </Link>
