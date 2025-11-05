@@ -1,8 +1,7 @@
 'use client';
 
-import { useMemo } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import SectionTitle from "@/components/Common/SectionTitle";
 import PartnerForm from "@/components/JoinUs/PartnerForm";
 
@@ -33,41 +32,74 @@ const formTabs: FormTab[] = [
 ];
 
 const PartnerWithUsContent = () => {
-  const searchParams = useSearchParams();
-  const urlVariant = (searchParams.get("type") ?? "institution") as PartnerFormVariant;
+  const [activeVariant, setActiveVariant] = useState<PartnerFormVariant>("institution");
 
-  const activeTab = useMemo(() => {
-    return formTabs.find((tab) => tab.value === urlVariant) ?? formTabs[0];
-  }, [urlVariant]);
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const type = params.get("type");
+
+    if (type === "organization" || type === "government") {
+      setActiveVariant(type);
+    }
+  }, []);
+
+  const handleSelect = useCallback(
+    (nextVariant: PartnerFormVariant) => {
+      setActiveVariant(nextVariant);
+
+      if (typeof window === "undefined") {
+        return;
+      }
+
+      const params = new URLSearchParams(window.location.search);
+      if (nextVariant === "institution") {
+        params.delete("type");
+      } else {
+        params.set("type", nextVariant);
+      }
+
+      const query = params.toString();
+      const nextUrl = `${window.location.pathname}${query ? `?${query}` : ""}`;
+      window.history.replaceState(null, "", nextUrl);
+    },
+    [],
+  );
+
+  const activeTab = formTabs.find((tab) => tab.value === activeVariant) ?? formTabs[0];
 
   return (
     <div className="py-24 md:py-28 lg:py-32">
       <div className="container max-w-5xl">
         <SectionTitle title="Partner With NGreenTech" paragraph={activeTab.summary} mb="32px" />
 
-        <div className="mb-10 flex flex-wrap justify-center gap-3">
+        <div className="mb-10 flex flex-wrap justify-center gap-3" role="tablist" aria-label="Partner form type">
           {formTabs.map((tab) => {
             const isActive = tab.value === activeTab.value;
-            const href = tab.value === formTabs[0].value ? "/partner-with-us" : `/partner-with-us?type=${tab.value}`;
 
             return (
-              <Link
+              <button
                 key={tab.value}
-                href={href}
-                scroll={false}
-                className={`inline-flex items-center rounded-full border px-6 py-2 text-sm font-semibold uppercase tracking-[0.2em] transition ${
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                onClick={() => handleSelect(tab.value)}
+                className={`inline-flex items-center rounded-full border px-6 py-2 text-sm font-semibold uppercase tracking-[0.2em] transition focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 ${
                   isActive
                     ? "border-primary bg-primary text-white shadow-btn"
                     : "border-primary/20 bg-white text-body-color hover:border-primary hover:text-primary"
                 }`}
               >
                 {tab.label}
-              </Link>
+              </button>
             );
           })}
         </div>
 
-        <PartnerForm variant={activeTab.value} />
+        <PartnerForm key={activeTab.value} variant={activeTab.value} />
 
         <div className="mt-10 text-center text-sm text-body-color">
           Want to volunteer as an individual instead?{" "}

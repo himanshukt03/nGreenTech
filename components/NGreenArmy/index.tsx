@@ -90,6 +90,7 @@ const members: Member[] = [
     grade: "Grade VI",
     school: "Bangalore International Academy, Bengaluru",
     summary: "Member",
+    image: getImagePath("/images/about/suhit.jpg"),
   },
   {
     id: "vynavi",
@@ -98,6 +99,7 @@ const members: Member[] = [
     grade: "Grade IV",
     school: "Vagdevi Vilas School, Bengaluru",
     summary: "Member",
+    image: getImagePath("/images/about/Vynavi.jpg"),
   },
   {
     id: "adarsh-rathi",

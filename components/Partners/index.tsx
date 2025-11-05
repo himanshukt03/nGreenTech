@@ -3,28 +3,22 @@ import SectionTitle from "../Common/SectionTitle";
 
 const partners = [
   {
-    id: "aarohan",
-    name: "Aarohan",
-    tagline: "Women-led innovation collective backing grassroots climate founders",
-    logo: "/images/brands/ayroui.svg",
+    id: "isf-junicorn",
+    name: "ISF Junicorn",
+    tagline: "Global innovation program mentoring young founders to scale climate solutions.",
+    logo: "/images/logo/junicorn.jpg",
   },
   {
-    id: "startup-runway",
-    name: "Startup Runway",
-    tagline: "Fueling student-led climate ventures from idea to pilot",
-    logo: "/images/brands/tailgrids-light.svg",
+    id: "bia-whitefield",
+    name: "Bangalore International Academy, Whitefield",
+    tagline: "School community rallying students to champion sustainability with nGreenTech.",
+    logo: "/images/logo/bangalore-international.png",
   },
   {
-    id: "us-india",
-    name: "Linecoins",
-    tagline: "Industry mentors co-designing circular economy playbooks",
-    logo: "/images/brands/lineicons.svg",
-  },
-  {
-    id: "tie-austin",
-    name: "TiE Austin",
-    tagline: "Global entrepreneurs cultivating green leadership pathways",
-    logo: "/images/brands/uideck-light.svg",
+    id: "sri-krishna-institute",
+    name: "Sri Krishna Institute of Technology, Bengaluru",
+    tagline: "Engineering talent co-designing e-waste recovery playbooks and outreach.",
+    logo: "/images/logo/sri-krishna.png",
   },
 ];
 
@@ -39,20 +33,20 @@ const Partners = () => {
           mb="48px"
         />
 
-        <div className="mx-auto grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto flex max-w-4xl flex-wrap justify-center gap-8">
           {partners.map((partner) => (
             <div
               key={partner.id}
-              className="group flex h-full flex-col items-center gap-5 rounded-[32px] border border-primary/15 bg-white p-6 text-center shadow-two transition hover:-translate-y-1 hover:shadow-one"
+              className="group flex h-full w-[260px] flex-col items-center gap-5 rounded-[32px] border border-primary/15 bg-white p-6 text-center shadow-two transition hover:-translate-y-1 hover:shadow-one"
             >
-              <div className="flex w-full max-w-[180px] flex-col items-center gap-4">
-                <div className="relative aspect-square w-full overflow-hidden rounded-3xl border border-primary/15 bg-gray-100">
+              <div className="flex w-[180px] flex-col items-center gap-4">
+                <div className="relative aspect-square w-full overflow-hidden rounded-3xl border border-gray-300 bg-gray-100">
                   {partner.logo ? (
                     <Image
                       src={partner.logo}
                       alt={`${partner.name} logo`}
                       fill
-                      className="object-contain p-5"
+                      className="object-contain"
                       sizes="180px"
                     />
                   ) : (
