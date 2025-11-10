@@ -72,7 +72,7 @@ const Footer = () => {
                     </a>
                   </li>
                   <li>
-                    <a href="/#join-us" className="transition hover:text-primary">
+                    <a href="/join-us" className="transition hover:text-primary">
                       Join Us
                     </a>
                   </li>
@@ -89,9 +89,9 @@ const Footer = () => {
               <div className="mb-12 lg:mb-16">
                 <h2 className="mb-6 text-xl font-semibold text-black">Connect</h2>
                 <ul className="space-y-4 text-base text-body-color">
-                  <li>hello@ngreentech.org</li>
-                  <li>+91 93900 12345</li>
-                  <li>Hyderabad, Telangana, India</li>
+                  <li>ngreentech2025@gmail.com</li>
+                  <li>+91 77300 41280</li>
+                  <li>Bengaluru, India</li>
                 </ul>
               </div>
             </div>
@@ -101,6 +101,9 @@ const Footer = () => {
           <div className="py-8">
             <p className="text-center text-base text-body-color">
               © {new Date().getFullYear()} nGreenTech. All rights reserved.
+            </p>
+            <p className="mt-2 text-center text-sm text-body-color">
+              a company registered under Section 8 of the Companies Act, 2013.
             </p>
           </div>
         </div>

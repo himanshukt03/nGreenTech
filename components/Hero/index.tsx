@@ -123,7 +123,7 @@ const Hero = () => {
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Link
-                href="/#join-us"
+                href="/join-us"
                 className="rounded-full bg-primary/90 px-7 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white shadow-btn transition hover:bg-primary"
               >
                 Join The Movement

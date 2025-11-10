@@ -68,10 +68,13 @@ const Contact = () => {
                 <span className="font-semibold text-dark">Founder &amp; CEO:</span> nGreenTech, empowering children to recycle e-waste responsibly.
               </p>
               <p>
-                <span className="font-semibold text-dark">Address:</span> B19-02, Birla Alokya, Soukya Road, Koraluru, Whitefield, Bengaluru.
+                <span className="font-semibold text-dark">Address:</span>Bengaluru, India.
               </p>
               <p>
-                <span className="font-semibold text-dark">Email:</span> hello@ngreentech.org
+                <span className="font-semibold text-dark">Email:</span> ngreentech2025@gmail.com
+              </p>
+              <p>
+                <span className="font-semibold text-dark">Phone:</span> +91 77300 41280
               </p>
             </div>
           </div>
@@ -82,7 +85,7 @@ const Contact = () => {
             <p className="mt-4 text-base leading-relaxed text-body-color">
               Follow our journeys, volunteer call-outs, and live event highlights across platforms.
             </p>
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              <div className="mt-6 grid gap-4 sm:grid-cols-2">
               {socialLinks.map((social) => (
                 <a
                   key={social.id}

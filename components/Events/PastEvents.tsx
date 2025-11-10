@@ -18,7 +18,7 @@ const pastEvents: PastEvent[] = [
     date: "2025",
     location: "Global Forum",
     description: "Recap available on LinkedIn (@ngreentech_org).",
-    link: "https://www.linkedin.com/company/ngreentech_org/",
+    link: "https://www.linkedin.com/posts/ngreen-tech_ngreentech-sdgsummit2025-visionkarnatakafoundation-activity-7382742388638867456-iwrF",
     image: "/images/events/sgd-summit.jpeg",
   },
   {
@@ -27,7 +27,7 @@ const pastEvents: PastEvent[] = [
     date: "2025",
     location: "SKIT",
     description: "Listen in through our LinkedIn posts for session highlights and behind-the-scenes moments.",
-    link: "https://www.linkedin.com/company/ngreentech_org/",
+    link: "https://www.linkedin.com/company/ngreen-tech/",
     image: "/images/blog/blog-03.jpg",
   },
   {
@@ -36,7 +36,7 @@ const pastEvents: PastEvent[] = [
     date: "2025",
     location: "Global Innovation Forum",
     description: "Students presented circular innovations alongside global futurists.",
-    link: "https://www.linkedin.com/company/ngreentech_org/",
+    link: "https://www.linkedin.com/posts/ngreen-tech_youthleadership-isfjunicorn-innovation-activity-7370077677908590592-vsdB",
     image: "/images/events/singularity.jpeg",
   },
   {
@@ -46,7 +46,7 @@ const pastEvents: PastEvent[] = [
     location: "Bengaluru, India",
     description:
       "Guest of Honor address by Nayan Adithya, sharing NGreenTech's youth-led e-waste recycling vision and thanking Christ University leadership and ISF Junicorn mentors for the platform.",
-    link: "https://www.linkedin.com/company/ngreentech_org/",
+    link: "https://www.linkedin.com/posts/ngreen-tech_ngreentech-sustainability-christuniversity-activity-7365629716189417473-buoE",
     image: "/images/events/christ.jpeg",
   },
   {
@@ -55,7 +55,7 @@ const pastEvents: PastEvent[] = [
     date: "2025",
     location: "Hyderabad, India",
     description: "Showcased e-waste recovery playbooks to startup founders and investors.",
-    link: "https://www.linkedin.com/company/ngreentech_org/",
+    link: "https://www.linkedin.com/company/ngreen-tech/",
     image: "/images/hero/Sustainable-cities.jpeg",
   },
   {
@@ -64,7 +64,7 @@ const pastEvents: PastEvent[] = [
     date: "2025",
     location: "Texas, USA",
     description: "nGreenTech teams collaborated with global peers on circular economy solutions.",
-    link: "https://www.linkedin.com/company/ngreentech_org/",
+    link: "https://www.linkedin.com/company/ngreen-tech/",
     image: "/images/events/isf.jpg",
   },
 ];

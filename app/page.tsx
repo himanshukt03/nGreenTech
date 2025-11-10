@@ -4,7 +4,7 @@ import Contact from "@/components/Contact";
 import Events from "@/components/Events";
 import Hero from "@/components/Hero";
 import Impact from "@/components/Impact";
-import JoinUs from "@/components/JoinUs";
+import JoinCTA from "@/components/JoinUs/HomeCTA";
 import Partners from "@/components/Partners";
 import Testimonials from "@/components/Testimonials";
 import { Metadata } from "next";
@@ -22,7 +22,7 @@ export default function Home() {
       <Hero />
       <HomeAbout />
       <Impact />
-      <JoinUs />
+  <JoinCTA />
       <Events />
       <Partners />
       <Testimonials />

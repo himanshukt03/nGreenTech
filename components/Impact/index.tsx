@@ -14,13 +14,13 @@ const metrics: Metric[] = [
   {
     id: "awareness",
     label: "Awareness Generated",
-    value: 10000,
+    value: 50000,
     suffix: "+",
   },
   {
     id: "ewaste",
     label: "E-Waste Collected",
-    value: 200,
+    value: 500,
     suffix: "+ Kgs",
   },
   {

@@ -9,7 +9,23 @@ type EventItem = {
   badge?: string;
 };
 
-const upcomingEvents: EventItem[] = [];
+const upcomingEvents: EventItem[] = [
+  {
+    id: "tedx-youth-2025",
+    title: "TEDx Youth Talk by Nayan Adithya",
+    date: "19 November 2025",
+    location: "TBD",
+    description: "Nayan Adithya presents a youth-led perspective on climate action and circular economies.",
+    badge: "Featured",
+  },
+  {
+    id: "ksit-talk-2025",
+    title: "My Story — Motivational Talk by Nayan Adithya",
+    date: "22 November 2025",
+    location: "KSIT (Sri Krishna Institute of Technology), Bengaluru",
+    description: "An inspiring session for engineering students on youth leadership and sustainable innovation.",
+  },
+];
 
 const Events = () => {
   return (
