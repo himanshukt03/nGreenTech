@@ -76,6 +76,9 @@ const Contact = () => {
               <p>
                 <span className="font-semibold text-dark">Phone:</span> +91 77300 41280
               </p>
+              <p>
+                <span className="font-semibold text-dark">Alternate Phone:</span> +91 96524 09397
+              </p>
             </div>
           </div>
           <div className="rounded-3xl border border-primary/15 bg-primary/5 p-10 shadow-btn-light">

@@ -12,20 +12,40 @@ type PageHeroProps = {
   description: string;
   image: string;
   actions?: Action[];
+  sectionClassName?: string;
+  imageClassName?: string;
+  overlayClassName?: string;
 };
 
-const PageHero = ({ eyebrow, title, description, image, actions = [] }: PageHeroProps) => {
+const PageHero = ({
+  eyebrow,
+  title,
+  description,
+  image,
+  actions = [],
+  sectionClassName,
+  imageClassName,
+  overlayClassName,
+}: PageHeroProps) => {
+  const sectionClasses = `relative overflow-hidden bg-dark/90 pb-20 pt-28 text-white md:pb-24 md:pt-36 lg:pb-28 lg:pt-40 ${
+    sectionClassName ?? ""
+  }`;
+  const imageClasses = `object-cover opacity-50 ${imageClassName ?? ""}`;
+  const overlayClasses = `absolute inset-0 bg-gradient-to-r from-dark via-dark/90 to-dark/60 ${
+    overlayClassName ?? ""
+  }`;
+
   return (
-    <section className="relative overflow-hidden bg-dark/90 pb-20 pt-28 text-white md:pb-24 md:pt-36 lg:pb-28 lg:pt-40">
+    <section className={sectionClasses}>
       <div className="absolute inset-0">
         <Image
           src={image}
           alt=""
           fill
           priority
-          className="object-cover opacity-50"
+          className={imageClasses}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark/90 to-dark/60" />
+        <div className={overlayClasses} />
       </div>
 
       <div className="relative z-10">
