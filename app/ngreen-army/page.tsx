@@ -17,7 +17,7 @@ const NGreenArmyPage = () => {
     image="/images/hero/ngreenarmy.jpeg"
     sectionClassName="flex min-h-screen items-end pb-24 pt-16 md:pt-24 lg:pt-28"
     imageClassName="opacity-60"
-  overlayClassName="from-dark/90 via-dark/65 to-dark/35"
+    overlayClassName="from-dark/65 via-dark/40 to-dark/35"
         actions={[{ label: "Join as volunteer", href: "/join-our-team" }]}
       />
       <NGreenArmy />
