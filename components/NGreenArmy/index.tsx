@@ -122,21 +122,21 @@ const leaderboard: Leader[] = [
 const NGreenArmy = () => {
   const [activeMember, setActiveMember] = useState<Member | null>(null);
   const maxPoints = Math.max(...leaderboard.map((leader) => leader.points));
-  const backgroundImage = getImagePath("/images/hero/ngreenarmy.jpeg");
+  // const backgroundImage = getImagePath("/images/hero/ngreenarmy.jpeg");
 
   return (
-    <section id="ngreenarmy" className="relative overflow-hidden py-16 md:py-20 lg:py-28">
-      <div className="absolute inset-0">
-        <Image
-          src={backgroundImage}
-          alt="nGreenArmy background"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#04140b]/92 via-[#071f12]/85 to-[#0a2316]/88" />
-        <div className="absolute inset-0 bg-white/70 mix-blend-soft-light" />
-      </div>
+    // <section id="ngreenarmy" className="relative overflow-hidden py-16 md:py-20 lg:py-28">
+    //   <div className="absolute inset-0">
+    //     <Image
+    //       src={backgroundImage}
+    //       alt="nGreenArmy background"
+    //       fill
+    //       className="object-cover"
+    //       priority
+    //     />
+    //     <div className="absolute inset-0 bg-gradient-to-br from-[#04140b]/92 via-[#071f12]/85 to-[#0a2316]/88" />
+    //     <div className="absolute inset-0 bg-white/70 mix-blend-soft-light" />
+    //   </div>
 
       <div className="container relative z-10">
         <SectionTitle
@@ -316,7 +316,7 @@ const NGreenArmy = () => {
           </div>
         )}
       </div>
-    </section>
+    // </section>
   );
 };
 
