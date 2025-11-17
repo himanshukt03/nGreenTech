@@ -2,6 +2,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ScrollToTop from "@/components/ScrollToTop";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "node_modules/react-modal-video/css/modal-video.css";
@@ -110,6 +111,7 @@ export default function RootLayout({
           <ScrollToTop />
         </Providers>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
