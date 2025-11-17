@@ -12,11 +12,11 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.ngreentech.org"),
   title: {
-    default: "nGreenTech | Mini Leaders with Mega Missions",
+    default: "nGreenTech",
     template: "%s | nGreenTech",
   },
   description:
-    "nGreenTech is a youth-led climate action movement founded by children. We help students design joyful sustainability missions like e-waste drives, giving them a platform to grow as confident, impact-first leaders.",
+    "nGreenTech is a youth-led climate action movement founded by children. We help students design joyful sustainability missions like e-waste drives and neighbourhood plantations, empowering them to grow as confident, impact-first leaders.",
   keywords: [
     "ngreentech",
     "nGreenTech",
@@ -32,27 +32,33 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "nGreenTech | Mini Leaders with Mega Missions",
+    title: "nGreenTech",
     description:
-      "nGreenTech is a youth-led climate action movement founded by children. We help students design joyful sustainability missions like e-waste drives, giving them a platform to grow as confident, impact-first leaders.",
+      "nGreenTech is a youth-led climate action movement founded by children. We help students design joyful sustainability missions like e-waste drives and neighbourhood plantations, empowering them to grow as confident, impact-first leaders.",
     url: "https://www.ngreentech.org",
     siteName: "nGreenTech",
     type: "website",
     locale: "en_IN",
     images: [
       {
-        url: "https://www.ngreentech.org/images/hero/hero-1.jpg",
+        url: "https://opengraph.b-cdn.net/production/images/a7bad283-30f4-4ed4-83fc-43371e944220.jpg?token=KBLPDWsjSQEe1rJJ2bIRRU7pjD0kUeopXq-QAZ1gdwI&height=1200&width=1200&expires=33299352772",
         width: 1200,
-        height: 630,
-        alt: "nGreenTech students leading sustainability efforts",
+        height: 1200,
+        alt: "nGreenTech mission collage",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "nGreenTech | Green Education & Circularity",
+    title: "nGreenTech",
     description:
-      "nGreenTech co-creates green education, e-waste circularity, and youth leadership programmes across schools and partners.",
+      "nGreenTech is a youth-led climate action movement founded by children. We help students design joyful sustainability missions like e-waste drives and neighbourhood plantations, empowering them to grow as confident, impact-first leaders.",
+    images: [
+      "https://opengraph.b-cdn.net/production/images/a7bad283-30f4-4ed4-83fc-43371e944220.jpg?token=KBLPDWsjSQEe1rJJ2bIRRU7pjD0kUeopXq-QAZ1gdwI&height=1200&width=1200&expires=33299352772",
+    ],
+  },
+  other: {
+    "twitter:domain": "ngreentech.org",
   },
   robots: {
     index: true,
