@@ -12,12 +12,13 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.ngreentech.org"),
   title: {
-    default: "nGreenTech | Green Education & Circularity",
+    default: "nGreenTech | Mini Leaders with Mega Missions",
     template: "%s | nGreenTech",
   },
   description:
-    "nGreenTech co-creates green education, e-waste circularity, and youth leadership programmes across schools and partners.",
+    "nGreenTech is a youth-led climate action movement founded by children. We help students design joyful sustainability missions like e-waste drives, giving them a platform to grow as confident, impact-first leaders.",
   keywords: [
+    "ngreentech",
     "nGreenTech",
     "green education",
     "e-waste circularity",
@@ -31,13 +32,13 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "nGreenTech | Green Education & Circularity",
+    title: "nGreenTech | Mini Leaders with Mega Missions",
     description:
-      "nGreenTech co-creates green education, e-waste circularity, and youth leadership programmes across schools and partners.",
+      "nGreenTech is a youth-led climate action movement founded by children. We help students design joyful sustainability missions like e-waste drives, giving them a platform to grow as confident, impact-first leaders.",
     url: "https://www.ngreentech.org",
     siteName: "nGreenTech",
     type: "website",
-    locale: "en_US",
+    locale: "en_IN",
     images: [
       {
         url: "https://www.ngreentech.org/images/hero/hero-1.jpg",
