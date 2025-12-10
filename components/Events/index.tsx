@@ -40,7 +40,7 @@ const Events = () => {
         <SectionTitle
           center
           title="Upcoming Events"
-          paragraph="Youth-led showcases, championships, and maker labs that keep the circular economy in motion."
+          paragraph=""
           mb="56px"
         />
 
