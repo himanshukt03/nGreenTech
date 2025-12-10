@@ -4,6 +4,8 @@
 import { FormEvent, useState } from "react";
 import toast from "react-hot-toast";
 
+import { buildWeb3FormPayload, WEB3FORMS_ENDPOINT } from "@/lib/utils";
+
 const fieldClass =
   "w-full rounded-2xl border border-primary/20 bg-white px-5 py-3 text-sm text-body-color outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/15";
 const labelClass = "block text-sm font-semibold text-dark";
@@ -19,24 +21,33 @@ const VolunteerForm = () => {
 
     const form = e.currentTarget;
     const formData = new FormData(form);
+    formData.set("formType", "volunteer-registration");
+    const payload = buildWeb3FormPayload(formData, {
+      formType: "volunteer-registration",
+      subject: "New NGreen Army volunteer registration",
+      fromNameFields: ["fullName"],
+      fromEmailFields: ["email"],
+    });
 
     try {
-      const response = await fetch("https://getform.io/f/allqrgwa", {
+      const response = await fetch(WEB3FORMS_ENDPOINT, {
         method: "POST",
-        body: formData,
         headers: {
+          "Content-Type": "application/json",
           Accept: "application/json",
         },
+        body: JSON.stringify(payload),
       });
+      const result = await response.json();
 
-      if (response.ok) {
+      if (result.success) {
         toast.success(
           "Registration submitted successfully! You'll receive your digital ID card and volunteer toolkit soon. Welcome to the NGreen Army!",
           { duration: 7000 }
         );
         form.reset();
       } else {
-        throw new Error("Form submission failed");
+        throw new Error(result.message || "Form submission failed");
       }
     } catch (error) {
       console.error("Form submission error:", error);
@@ -56,7 +67,6 @@ const VolunteerForm = () => {
         className="flex flex-col gap-8 rounded-3xl border border-primary/15 bg-primary/5 p-8 shadow-btn-light"
       >
       <input type="hidden" name="formType" value="volunteer-registration" />
-      <input type="hidden" name="_gotcha" style={{ display: "none" }} />
 
       <header className="space-y-3">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary">

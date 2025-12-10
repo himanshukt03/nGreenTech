@@ -4,6 +4,8 @@
 import { FormEvent, useState } from "react";
 import toast from "react-hot-toast";
 
+import { buildWeb3FormPayload, WEB3FORMS_ENDPOINT } from "@/lib/utils";
+
 type PartnerFormVariant = "institution" | "organization" | "government";
 
 type PartnerFormProps = {
@@ -12,13 +14,11 @@ type PartnerFormProps = {
 
 const fieldClass =
   "w-full rounded-2xl border border-primary/20 bg-white px-5 py-3 text-sm text-body-color outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/15";
-const fileFieldClass =
-  "w-full cursor-pointer rounded-2xl border border-primary/20 bg-white px-5 py-2.5 text-sm text-body-color outline-none transition file:mr-4 file:cursor-pointer file:rounded-full file:border-none file:bg-primary file:px-4 file:py-2 file:text-sm file:font-semibold file:uppercase file:tracking-[0.2em] file:text-white focus:border-primary focus:ring-2 focus:ring-primary/15";
 const labelClass = "block text-sm font-semibold text-dark";
 const sectionCardClass =
   "grid gap-4 rounded-2xl border border-primary/15 bg-white p-6 shadow-sm";
 
-const useGetformSubmit = (formType: string, successMessage: string) => {
+const useWeb3FormSubmit = (formType: string, successMessage: string, subject?: string) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -28,21 +28,24 @@ const useGetformSubmit = (formType: string, successMessage: string) => {
     const form = event.currentTarget;
     const formData = new FormData(form);
     formData.set("formType", formType);
+    const payload = buildWeb3FormPayload(formData, { formType, subject });
 
     try {
-      const response = await fetch("https://getform.io/f/allqrgwa", {
+      const response = await fetch(WEB3FORMS_ENDPOINT, {
         method: "POST",
-        body: formData,
         headers: {
+          "Content-Type": "application/json",
           Accept: "application/json",
         },
+        body: JSON.stringify(payload),
       });
+      const result = await response.json();
 
-      if (response.ok) {
+      if (result.success) {
         toast.success(successMessage, { duration: 7000 });
         form.reset();
       } else {
-        throw new Error("Form submission failed");
+        throw new Error(result.message || "Form submission failed");
       }
     } catch (error) {
       console.error("Partner form submission error:", error);
@@ -70,7 +73,7 @@ const PartnerForm = ({ variant }: PartnerFormProps) => {
 };
 
 const EducationalInstitutionForm = () => {
-  const { isSubmitting, handleSubmit } = useGetformSubmit(
+  const { isSubmitting, handleSubmit } = useWeb3FormSubmit(
     "institution-collaboration",
     "Thank you for joining NGreenTech in empowering young changemakers. Our team will contact you soon to finalize your partnership and plan your first green drive."
   );
@@ -78,11 +81,9 @@ const EducationalInstitutionForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      encType="multipart/form-data"
       className="flex flex-col gap-8 rounded-3xl border border-primary/15 bg-white p-8 shadow-two"
     >
       <input type="hidden" name="formType" value="institution-collaboration" />
-      <input type="hidden" name="_gotcha" style={{ display: "none" }} />
 
       <header className="space-y-3">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary">
@@ -255,31 +256,7 @@ const EducationalInstitutionForm = () => {
       </section>
 
       <section className={sectionCardClass}>
-        <h4 className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">Section 5: Attachments (optional)</h4>
-        <div className="grid gap-4 md:grid-cols-2">
-          <div>
-            <label htmlFor="institution-logo" className={labelClass}>
-              School / College logo
-            </label>
-            <input id="institution-logo" name="institutionLogo" type="file" className={fileFieldClass} />
-          </div>
-          <div>
-            <label htmlFor="institution-permission" className={labelClass}>
-              Permission letter / Proposal document
-            </label>
-            <input id="institution-permission" name="permissionLetter" type="file" className={fileFieldClass} />
-          </div>
-          <div className="md:col-span-2">
-            <label htmlFor="institution-initiatives" className={labelClass}>
-              Past sustainability initiatives (PDF / photos)
-            </label>
-            <input id="institution-initiatives" name="pastInitiatives" type="file" className={fileFieldClass} multiple />
-          </div>
-        </div>
-      </section>
-
-      <section className={sectionCardClass}>
-        <h4 className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">Section 6: Terms & Confirmation</h4>
+        <h4 className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">Section 5: Terms & Confirmation</h4>
         <div className="space-y-3">
           <label className="flex items-start gap-3 text-sm text-body-color">
             <input
@@ -336,7 +313,7 @@ const EducationalInstitutionForm = () => {
 };
 
 const OrganizationCollaborationForm = () => {
-  const { isSubmitting, handleSubmit } = useGetformSubmit(
+  const { isSubmitting, handleSubmit } = useWeb3FormSubmit(
     "organization-collaboration",
     "Thank you for your interest in partnering with NGreenTech! Our team will review your submission and get in touch within 5-7 working days."
   );
@@ -344,11 +321,9 @@ const OrganizationCollaborationForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      encType="multipart/form-data"
       className="flex flex-col gap-8 rounded-3xl border border-primary/15 bg-white p-8 shadow-two"
     >
       <input type="hidden" name="formType" value="organization-collaboration" />
-      <input type="hidden" name="_gotcha" style={{ display: "none" }} />
 
       <header className="space-y-3">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary">
@@ -619,31 +594,7 @@ const OrganizationCollaborationForm = () => {
       </section>
 
       <section className={sectionCardClass}>
-        <h4 className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">Section 7: Supporting Documents (optional)</h4>
-        <div className="grid gap-4 md:grid-cols-2">
-          <div>
-            <label htmlFor="org-logo" className={labelClass}>
-              Organization logo (PNG/JPG)
-            </label>
-            <input id="org-logo" name="organisationLogo" type="file" className={fileFieldClass} />
-          </div>
-          <div>
-            <label htmlFor="org-csr-brochure" className={labelClass}>
-              CSR brochure / Annual report / Proposal (PDF)
-            </label>
-            <input id="org-csr-brochure" name="csrBrochure" type="file" className={fileFieldClass} />
-          </div>
-          <div className="md:col-span-2">
-            <label htmlFor="org-past-proof" className={labelClass}>
-              Past partnership proof (if any)
-            </label>
-            <input id="org-past-proof" name="pastPartnershipProof" type="file" className={fileFieldClass} multiple />
-          </div>
-        </div>
-      </section>
-
-      <section className={sectionCardClass}>
-        <h4 className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">Section 8: Preferred Timeline</h4>
+        <h4 className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">Section 7: Preferred Timeline</h4>
         <div className="grid gap-4 md:grid-cols-3">
           <div>
             <label htmlFor="org-start-date" className={labelClass}>
@@ -673,7 +624,7 @@ const OrganizationCollaborationForm = () => {
       </section>
 
       <section className={sectionCardClass}>
-        <h4 className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">Section 9: Terms & Confirmation</h4>
+        <h4 className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">Section 8: Terms & Confirmation</h4>
         <div className="space-y-3">
           <label className="flex items-start gap-3 text-sm text-body-color">
             <input
@@ -736,7 +687,7 @@ const OrganizationCollaborationForm = () => {
 };
 
 const GovernmentCollaborationForm = () => {
-  const { isSubmitting, handleSubmit } = useGetformSubmit(
+  const { isSubmitting, handleSubmit } = useWeb3FormSubmit(
     "government-collaboration",
     "Thank you for your interest in partnering with NGreenTech Foundation. Our coordination team will reach out within 7 working days to discuss your proposal."
   );
@@ -744,11 +695,9 @@ const GovernmentCollaborationForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      encType="multipart/form-data"
       className="flex flex-col gap-8 rounded-3xl border border-primary/15 bg-white p-8 shadow-two"
     >
       <input type="hidden" name="formType" value="government-collaboration" />
-      <input type="hidden" name="_gotcha" style={{ display: "none" }} />
 
       <header className="space-y-3">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary">
@@ -1071,31 +1020,7 @@ const GovernmentCollaborationForm = () => {
       </section>
 
       <section className={sectionCardClass}>
-        <h4 className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">Section 8: Supporting Documents (optional)</h4>
-        <div className="grid gap-4 md:grid-cols-2">
-          <div>
-            <label htmlFor="gov-proposal" className={labelClass}>
-              Official proposal or concept note (PDF)
-            </label>
-            <input id="gov-proposal" name="officialProposal" type="file" className={fileFieldClass} />
-          </div>
-          <div>
-            <label htmlFor="gov-logo" className={labelClass}>
-              Department / Office logo (PNG/JPG)
-            </label>
-            <input id="gov-logo" name="departmentLogo" type="file" className={fileFieldClass} />
-          </div>
-          <div className="md:col-span-2">
-            <label htmlFor="gov-previous-docs" className={labelClass}>
-              Previous collaboration documents (if any)
-            </label>
-            <input id="gov-previous-docs" name="previousCollaborations" type="file" className={fileFieldClass} multiple />
-          </div>
-        </div>
-      </section>
-
-      <section className={sectionCardClass}>
-        <h4 className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">Section 9: Preferred Timeline</h4>
+        <h4 className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">Section 8: Preferred Timeline</h4>
         <div className="grid gap-4 md:grid-cols-3">
           <div>
             <label htmlFor="gov-start-date" className={labelClass}>
@@ -1127,7 +1052,7 @@ const GovernmentCollaborationForm = () => {
       </section>
 
       <section className={sectionCardClass}>
-        <h4 className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">Section 10: Terms & Confirmation</h4>
+        <h4 className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">Section 9: Terms & Confirmation</h4>
         <div className="space-y-3">
           <label className="flex items-start gap-3 text-sm text-body-color">
             <input
@@ -1173,7 +1098,7 @@ const GovernmentCollaborationForm = () => {
       </section>
 
       <section className={sectionCardClass}>
-        <h4 className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">Section 11: Additional Details</h4>
+        <h4 className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">Section 10: Additional Details</h4>
         <div className="grid gap-4 md:grid-cols-2">
           <div>
             <label htmlFor="gov-referral" className={labelClass}>
