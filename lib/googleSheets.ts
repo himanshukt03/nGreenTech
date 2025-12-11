@@ -1,31 +1,19 @@
 import { google } from 'googleapis'
 
-if (!process.env.GOOGLE_SERVICE_ACCOUNT_KEY_JSON) {
-  console.warn('Missing GOOGLE_SERVICE_ACCOUNT_KEY_JSON in env')
-}
-if (!process.env.GOOGLE_SHEET_ID) {
-  console.warn('Missing GOOGLE_SHEET_ID in env')
-}
-
 // Initialize auth only if keys are present
 let sheets: any = null;
-let initError: string | null = null;
 
 try {
   if (process.env.GOOGLE_SERVICE_ACCOUNT_KEY_JSON) {
-    console.log("Parsing service account JSON...");
     const keyJson = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_KEY_JSON)
-    console.log("Service account email:", keyJson.client_email);
     const auth = new google.auth.GoogleAuth({
       credentials: keyJson,
       scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'],
     })
     sheets = google.sheets({ version: 'v4', auth })
-    console.log("Google Sheets client initialized successfully");
   }
 } catch (error: any) {
-  initError = error?.message || String(error);
-  console.error("Error initializing Google Sheets auth:", initError);
+  console.error("Error initializing Google Sheets auth:", error?.message || error);
 }
 
 export type EventRow = {
@@ -61,16 +49,11 @@ function parseRows(rows: any[][]) {
 
 /** Fetch Events sheet (sheet name: Events). Expects header row with columns: id,date,title,location,description */
 export async function fetchEvents(sheetId = process.env.GOOGLE_SHEET_ID!): Promise<EventRow[]> {
-  if (!sheets) {
-    console.error("fetchEvents: sheets client not initialized. initError:", initError);
-    return [];
-  }
+  if (!sheets) return [];
   try {
-    console.log("Fetching Events from sheet:", sheetId);
     const range = 'Events!A1:Z'
     const res = await sheets.spreadsheets.values.get({ spreadsheetId: sheetId, range })
     const rows = res.data.values || []
-    console.log("Events rows fetched:", rows.length);
     const parsed = parseRows(rows) as any[]
     // Normalize to typed shape and sort by date desc (optional)
     return parsed
@@ -86,8 +69,7 @@ export async function fetchEvents(sheetId = process.env.GOOGLE_SHEET_ID!): Promi
         if (a.date && b.date) return new Date(b.date).getTime() - new Date(a.date).getTime()
         return 0
       })
-  } catch (error: any) {
-    console.error("Error fetching events:", error?.message || error);
+  } catch {
     return [];
   }
 }
@@ -109,12 +91,7 @@ export async function fetchLeaderboard(sheetId = process.env.GOOGLE_SHEET_ID!): 
         points: r.points ? Number(r.points) : undefined,
       }))
       .sort((a, b) => (a.position ?? 999) - (b.position ?? 999))
-  } catch (error: any) {
-    // Log detailed error info
-    console.error("Error fetching leaderboard:", error?.message || error);
-    if (error?.response?.data) {
-      console.error("API Response:", JSON.stringify(error.response.data, null, 2));
-    }
+  } catch {
     return [];
   }
 }
