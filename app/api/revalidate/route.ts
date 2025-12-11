@@ -5,7 +5,7 @@ export async function POST(request: NextRequest) {
   const secret = request.nextUrl.searchParams.get('secret')
   const headerSecret = request.headers.get('x-revalidate-secret')
 
-  if (secret !== process.env.NEXT_PUBLIC_REVALIDATE_SECRET && headerSecret !== process.env.NEXT_PUBLIC_REVALIDATE_SECRET) {
+  if (secret !== process.env.REVALIDATE_SECRET && headerSecret !== process.env.REVALIDATE_SECRET) {
     return NextResponse.json({ message: 'Invalid token' }, { status: 401 })
   }
 
