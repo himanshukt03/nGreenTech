@@ -1,6 +1,7 @@
 "use client";
 
 import { getImagePath } from "@/lib/utils";
+import { LeaderRow } from "@/lib/googleSheets";
 import Image from "next/image";
 import { useState } from "react";
 import SectionTitle from "../Common/SectionTitle";
@@ -18,12 +19,8 @@ type Member = {
   image?: string;
 };
 
-type Leader = {
-  id: string;
-  rank: number;
-  name: string;
-  ewaste: string;
-  points: number;
+type NGreenArmyProps = {
+  leaderboard?: LeaderRow[];
 };
 
 const members: Member[] = [
@@ -112,16 +109,20 @@ const members: Member[] = [
   // Nandhan removed as requested
 ];
 
-const leaderboard: Leader[] = [
-  { id: "leader-suhit", rank: 1, name: "Suhit", ewaste: "16 Kgs", points: 160 },
-  { id: "leader-aaradhya", rank: 2, name: "Aaradhya", ewaste: "15 Kgs", points: 150 },
-  { id: "leader-pranish", rank: 3, name: "Praneesh", ewaste: "10 Kgs", points: 100 },
-  { id: "leader-utkarsh", rank: 4, name: "Utkarsh", ewaste: "5 Kgs", points: 50 },
+// Fallback static leaderboard data
+const staticLeaderboard: LeaderRow[] = [
+  { position: 1, name: "Suhit", kgs: 16, points: 160 },
+  { position: 2, name: "Aaradhya", kgs: 15, points: 150 },
+  { position: 3, name: "Praneesh", kgs: 10, points: 100 },
+  { position: 4, name: "Utkarsh", kgs: 5, points: 50 },
 ];
 
-const NGreenArmy = () => {
+const NGreenArmy = ({ leaderboard: sheetLeaderboard }: NGreenArmyProps) => {
   const [activeMember, setActiveMember] = useState<Member | null>(null);
-  const maxPoints = Math.max(...leaderboard.map((leader) => leader.points));
+  
+  // Use Google Sheets data if available, otherwise fallback to static
+  const leaderboard = sheetLeaderboard && sheetLeaderboard.length > 0 ? sheetLeaderboard : staticLeaderboard;
+  const maxPoints = Math.max(...leaderboard.map((leader) => leader.points || 0), 1);
   // const backgroundImage = getImagePath("/images/hero/ngreenarmy.jpeg");
 
   return (
@@ -211,12 +212,13 @@ const NGreenArmy = () => {
           </div>
 
           <ol className="mt-6 space-y-4">
-            {leaderboard.map((leader) => {
-              const progress = Math.round((leader.points / maxPoints) * 100);
-              const isTopThree = leader.rank <= 3;
+            {leaderboard.map((leader, idx) => {
+              const rank = leader.position || idx + 1;
+              const progress = Math.round(((leader.points || 0) / maxPoints) * 100);
+              const isTopThree = rank <= 3;
               return (
                 <li
-                  key={leader.id}
+                  key={`leader-${leader.name}-${idx}`}
                   className={`flex items-center gap-5 rounded-[28px] border px-6 py-5 shadow-two transition ${
                     isTopThree
                       ? "border-primary/25 bg-white"
@@ -228,12 +230,12 @@ const NGreenArmy = () => {
                       isTopThree ? "bg-primary text-white" : "border border-primary/25 text-primary"
                     }`}
                   >
-                    #{leader.rank}
+                    #{rank}
                   </span>
                   <div className="flex-1">
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <p className="text-sm font-semibold text-dark">{leader.name}</p>
-                      <span className="text-xs uppercase tracking-[0.25em] text-body-color">{leader.ewaste}</span>
+                      <span className="text-xs uppercase tracking-[0.25em] text-body-color">{leader.kgs} Kgs</span>
                     </div>
                     <div className="mt-3 h-2 overflow-hidden rounded-full bg-primary/10">
                       <div
