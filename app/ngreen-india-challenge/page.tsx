@@ -52,7 +52,7 @@ const NGreenIndiaChallengePage = () => {
           <div className="mb-8 mt-20 overflow-hidden rounded-xl bg-white shadow-one dark:bg-dark md:mb-16">
             <div className="relative aspect-video w-full md:aspect-[3/1] lg:aspect-[4/1]">
               <Image
-                src="/images/logo/Green_India_Challenge1.png"
+                src="/images/logo/Green_India_Challenge.png"
                 alt="nGreen India Challenge Banner"
                 fill
                 className="object-contain"
