@@ -195,6 +195,19 @@ const RegistrationForm = () => {
               required
             />
           </div>
+          <div>
+            <label htmlFor="student-count" className={labelClass}>
+              Number of students in the school
+            </label>
+            <input
+              id="student-count"
+              name="studentCount"
+              type="number"
+              min="0"
+              className={fieldClass}
+              required
+            />
+          </div>
         </div>
       </section>
 
@@ -267,6 +280,28 @@ const RegistrationForm = () => {
         <h4 className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">
           Section 3: Terms & Confirmation
         </h4>
+        <div>
+          <label htmlFor="referral-source" className={labelClass}>
+            How did you hear about this challenge?
+          </label>
+          <select
+            id="referral-source"
+            name="referralSource"
+            className={fieldClass}
+            defaultValue=""
+            required
+          >
+            <option value="" disabled>
+              Select an option
+            </option>
+            <option value="social-media">Social Media (LinkedIn, Instagram, etc.)</option>
+            <option value="email">Email Invitation</option>
+            <option value="website">nGreenTech Website</option>
+            <option value="referral">Referral from another school/colleague</option>
+            <option value="event">Event or Webinar</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
         <div className="space-y-3">
           <label className="flex items-start gap-3 text-sm text-body-color">
             <input

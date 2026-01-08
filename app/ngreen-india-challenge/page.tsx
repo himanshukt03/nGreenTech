@@ -57,7 +57,7 @@ const NGreenIndiaChallengePage = () => {
           <div className="mb-8 overflow-hidden rounded-xl bg-white shadow-one dark:bg-dark md:mb-16">
             <div className="relative aspect-video w-full md:aspect-[3/1] lg:aspect-[4/1]">
               <Image
-                src="/images/hero/green_india_banner.png"
+                src="/images/logo/Green_India_Challenge1.png"
                 alt="nGreen India Challenge Banner"
                 fill
                 className="object-contain"
@@ -165,9 +165,12 @@ const NGreenIndiaChallengePage = () => {
                     <p className="mb-2 font-bold text-primary">
                       Schools across major cities of India
                     </p>
-                    <p className="text-sm text-body-color">
-                      (City list to be updated shortly)
-                    </p>
+                    <Link
+                      href="/ngreen-india-challenge/cities"
+                      className="mt-2 inline-flex items-center rounded-sm bg-primary/10 px-4 py-2 text-sm font-bold text-primary transition hover:bg-primary hover:text-white"
+                    >
+                      View Participating Cities
+                    </Link>
                   </div>
 
                   <h3 className="mb-6 border-b border-body-color border-opacity-10 pb-4 text-xl font-bold text-black dark:text-white">
