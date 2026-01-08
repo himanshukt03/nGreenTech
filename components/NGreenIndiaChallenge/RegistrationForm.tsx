@@ -86,7 +86,7 @@ const RegistrationForm = () => {
           nGreen India Challenge
         </h3>
         <p className="text-sm text-body-color">
-          Join the National Inter-School E-Waste Awareness & Action Challenge.
+          Join the National Inter school E waste Competiton.
           Register your institution today.
         </p>
       </header>

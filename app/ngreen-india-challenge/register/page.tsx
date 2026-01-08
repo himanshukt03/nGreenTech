@@ -6,7 +6,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Register | nGreen India Challenge",
   description:
-    "Register your institution for the National Inter-School E-Waste Awareness & Action Challenge",
+    "Register your institution for the National Inter school E waste Competiton",
 };
 
 const RegisterPage = () => {

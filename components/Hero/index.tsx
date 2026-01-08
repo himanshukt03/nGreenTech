@@ -15,7 +15,7 @@ const slides: Slide[] = [
   {
     id: "ngreen-india-challenge",
     title: "nGreen India Challenge",
-    description: "National Inter-School E-Waste Awareness & Action Challenge.",
+    description: "National Inter school E waste Competiton.",
     image: "/images/hero/e-waste_challenege.png",
     mobileImage: "/images/hero/e-waste_challenege-mobile.png",
   },

@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "nGreen India Challenge | nGreenTech",
-  description: "National Inter-School E-Waste Awareness & Action Challenge",
+  description: "National Inter school E waste Competiton",
 };
 
 const ChallengeCard = ({ title, children, className = "" }) => (
@@ -69,7 +69,7 @@ const NGreenIndiaChallengePage = () => {
                   nGreen India Challenge
                 </h2>
                 <h3 className="mb-6 text-sm font-semibold text-gray-600 dark:text-gray-400 sm:text-lg">
-                  National Inter-School E-Waste Awareness & Action Challenge
+                  National Inter school E waste Competiton
                 </h3>
                 <p className="mb-6 text-sm font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed">
                   The nGreen India Challenge is a national-level, student-led
