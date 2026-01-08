@@ -38,6 +38,12 @@ const menuData: Menu[] = [
     newTab: false,
   },
   {
+    id: 9,
+    title: "nGreen India Challenge",
+    path: "/ngreen-india-challenge",
+    newTab: false,
+  },
+  {
     id: 7,
     title: "Partners",
     path: "/#partners",
