@@ -8,9 +8,17 @@ type Slide = {
   title: string;
   description: string;
   image: string;
+  mobileImage?: string;
 };
 
 const slides: Slide[] = [
+  {
+    id: "ngreen-india-challenge",
+    title: "nGreen India Challenge",
+    description: "National Inter-School E-Waste Awareness & Action Challenge.",
+    image: "/images/hero/e-waste_challenege.png",
+    mobileImage: "/images/hero/e-waste_challenege-mobile.png",
+  },
   {
     id: "sdg-4",
     title: "SDG 4 – Quality Education",
@@ -73,12 +81,14 @@ const Hero = () => {
       return undefined;
     }
 
-    const timer = window.setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % slides.length);
-    }, 7000);
+    const duration = activeIndex === 0 ? 15000 : 7000; // 15s for first slide (8s more), 7s for others
 
-    return () => window.clearInterval(timer);
-  }, [shouldAutoRotate]);
+    const timer = window.setTimeout(() => {
+      setActiveIndex((prev) => (prev + 1) % slides.length);
+    }, duration);
+
+    return () => window.clearTimeout(timer);
+  }, [shouldAutoRotate, activeIndex]);
 
   const handleIndicatorSelect = (index: number) => {
     setActiveIndex(index);
@@ -89,55 +99,90 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative flex h-[calc(100vh-70px)] min-h-[700px] w-full items-center overflow-hidden bg-dark/80 pt-[88px] md:h-[calc(100vh-70px)] lg:min-h-[760px]"
+      className="relative flex h-screen w-full items-center overflow-hidden bg-dark/80 pt-[88px]"
     >
       <div className="absolute inset-0">
-        {slides.map((slide, index) => (
-          <div
-            key={slide.id}
-            className={`absolute inset-0 transition-all duration-700 ease-out ${
-              index === activeIndex
-                ? "z-20 opacity-100"
-                : "z-10 opacity-0"
-            }`}
-            style={{
-              backgroundImage: `url(${slide.image})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-            }}
-          >
-            <div className="absolute inset-0 bg-black/50" />
-          </div>
-        ))}
+        {slides.map((slide, index) => {
+          const isFirstSlide = index === 0;
+          return (
+            <div
+              key={slide.id}
+              className={`absolute inset-0 transition-all duration-700 ease-out ${
+                index === activeIndex ? "z-20 opacity-100" : "z-10 opacity-0"
+              }`}
+            >
+              {/* Desktop Image */}
+              <div
+                className={`hidden h-full w-full md:block`}
+                style={{
+                  backgroundImage: `url(${slide.image})`,
+                  backgroundSize: isFirstSlide ? "contain" : "cover",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                  backgroundColor: isFirstSlide ? "#cae2ff" : undefined,
+                  backgroundOrigin: isFirstSlide ? "content-box" : undefined,
+                  paddingTop: isFirstSlide ? "90px" : undefined,
+                  paddingBottom: isFirstSlide ? "0px" : undefined,
+                }}
+              />
+
+              {/* Mobile Image */}
+              <div
+                className={`block h-full w-full md:hidden`}
+                style={{
+                  backgroundImage: `url(${slide.mobileImage || slide.image})`,
+                  backgroundSize: isFirstSlide ? "contain" : "cover",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                  backgroundColor: isFirstSlide ? "#cae2ff" : undefined,
+                  backgroundOrigin: isFirstSlide ? "content-box" : undefined,
+                  paddingTop: isFirstSlide ? "80px" : undefined,
+                  paddingBottom: isFirstSlide ? "0px" : undefined,
+                }}
+              />
+
+              {!isFirstSlide && <div className="absolute inset-0 bg-black/50" />}
+              {isFirstSlide && (
+                <Link
+                  href="/ngreen-india-challenge"
+                  className="absolute left-1/2 top-[65%] z-30 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full border-2 border-white bg-primary px-6 py-2 text-xs font-bold uppercase tracking-[0.2em] text-white shadow-[0_0_30px_rgba(0,0,0,0.3)] transition duration-300 hover:scale-105 hover:bg-primary/90 md:top-[82%] md:px-10 md:py-4 md:text-sm"
+                >
+                  Register Now
+                </Link>
+              )}
+            </div>
+          );
+        })}
       </div>
 
-      <div className="relative z-30 w-full">
-        <div className="container">
-          <div className="max-w-3xl space-y-6">
-            <h1 className="text-3xl font-semibold leading-tight text-white sm:text-4xl md:text-[2.75rem]">
-              {activeSlide.title}
-            </h1>
-            <p className="text-base leading-relaxed text-white/90">
-              {activeSlide.description}
-            </p>
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-              <Link
-                href="/join-us"
-                className="rounded-full bg-primary/90 px-7 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white shadow-btn transition hover:bg-primary"
-              >
-                Join The Movement
-              </Link>
-              <Link
-                href="/#about"
-                className="rounded-full border border-white/50 px-7 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white transition hover:border-white"
-              >
-                Explore Our Story
-              </Link>
+      {activeIndex !== 0 && (
+        <div className="relative z-30 w-full">
+          <div className="container">
+            <div className="max-w-3xl space-y-6">
+              <h1 className="text-3xl font-semibold leading-tight text-white sm:text-4xl md:text-[2.75rem]">
+                {activeSlide.title}
+              </h1>
+              <p className="text-base leading-relaxed text-white/90">
+                {activeSlide.description}
+              </p>
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <Link
+                  href="/join-us"
+                  className="rounded-full bg-primary/90 px-7 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white shadow-btn transition hover:bg-primary"
+                >
+                  Join The Movement
+                </Link>
+                <Link
+                  href="/#about"
+                  className="rounded-full border border-white/50 px-7 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white transition hover:border-white"
+                >
+                  Explore Our Story
+                </Link>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
 
       <div className="absolute bottom-10 left-1/2 z-40 -translate-x-1/2">
         <div className="flex items-center gap-3 rounded-full bg-white/35 px-6 py-3 backdrop-blur-md">

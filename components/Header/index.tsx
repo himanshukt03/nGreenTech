@@ -42,17 +42,17 @@ const Header = () => {
           sticky ? "shadow-sticky" : "shadow-sm"
         }`}
       >
-        <div className="container">
+        <div className="w-full px-4 xl:px-10 2xl:px-16">
           <div className="relative -mx-4 flex items-center justify-between">
-            <div className="w-64 max-w-full px-4 xl:mr-12">
+            <div className="w-60 max-w-full px-4 xl:mr-12">
               <Link href="/" className="header-logo block w-full py-2 lg:py-1">
-                <div className="relative h-14 w-48">
+                <div className="relative h-14 w-full">
                   <Image
                     src="/images/logo/Ngreen-logo.png"
                     alt="nGreenTech logo"
                     fill
                     sizes="192px"
-                    className="object-contain"
+                    className="object-contain object-left"
                     priority
                   />
                 </div>
@@ -90,7 +90,7 @@ const Header = () => {
                       : "invisible top-[120%] opacity-0"
                   }`}
                 >
-                  <ul className="block lg:flex lg:space-x-12">
+                  <ul className="block lg:flex lg:space-x-6 xl:space-x-12">
                     {menuData.map((menuItem, index) => {
                       const isHome = menuItem.path === "/";
                       const isActive = isHome
@@ -101,7 +101,7 @@ const Header = () => {
                         <li key={index} className="group relative">
                           <Link
                             href={menuItem.path}
-                            className={`flex py-2 text-base lg:mr-0 lg:inline-flex lg:px-0 lg:py-4 ${
+                            className={`flex whitespace-nowrap py-2 text-base lg:mr-0 lg:inline-flex lg:px-0 lg:py-4 lg:text-sm xl:text-base ${
                               isActive
                                 ? "text-primary"
                                 : "text-dark hover:text-primary"
@@ -118,10 +118,10 @@ const Header = () => {
                   </ul>
                 </nav>
               </div>
-              <div className="hidden items-center justify-end pr-16 lg:flex lg:pr-0">
+              <div className="hidden items-center justify-end pr-16 lg:flex lg:pr-0 lg:pl-8">
                 <Link
                   href="/join-us"
-                  className="rounded-full border border-primary px-6 py-2 text-sm font-semibold uppercase tracking-widest text-primary transition hover:bg-primary hover:text-white"
+                  className="whitespace-nowrap rounded-full border border-primary px-8 py-3 text-sm font-semibold uppercase tracking-widest text-primary transition hover:bg-primary hover:text-white"
                 >
                   Join us
                 </Link>
