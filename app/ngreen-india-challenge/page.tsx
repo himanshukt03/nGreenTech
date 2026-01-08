@@ -46,15 +46,10 @@ const StepItem = ({ number, title }) => (
 const NGreenIndiaChallengePage = () => {
   return (
     <>
-      <Breadcrumb
-        pageName="nGreen India Challenge"
-        description="National Inter-School E-Waste Awareness & Action Challenge"
-      />
-
       <section className="pb-[40px] pt-[40px] md:pb-[120px]">
         <div className="container">
           {/* Banner Image */}
-          <div className="mb-8 overflow-hidden rounded-xl bg-white shadow-one dark:bg-dark md:mb-16">
+          <div className="mb-8 mt-20 overflow-hidden rounded-xl bg-white shadow-one dark:bg-dark md:mb-16">
             <div className="relative aspect-video w-full md:aspect-[3/1] lg:aspect-[4/1]">
               <Image
                 src="/images/logo/Green_India_Challenge1.png"
@@ -70,9 +65,12 @@ const NGreenIndiaChallengePage = () => {
             <div className="w-full px-4 lg:w-8/12">
               {/* Introduction */}
               <div className="mb-12">
-                <h2 className="mb-4 text-xl font-bold text-black dark:text-white sm:text-3xl md:mb-6">
-                  National Inter-School E-Waste Awareness & Action Challenge
+                <h2 className="mb-2 text-xl font-bold text-black dark:text-white sm:text-3xl">
+                  nGreen India Challenge
                 </h2>
+                <h3 className="mb-6 text-sm font-semibold text-gray-600 dark:text-gray-400 sm:text-lg">
+                  National Inter-School E-Waste Awareness & Action Challenge
+                </h3>
                 <p className="mb-6 text-sm font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed">
                   The nGreen India Challenge is a national-level, student-led
                   initiative that brings schools across India together to create
@@ -190,9 +188,6 @@ const NGreenIndiaChallengePage = () => {
                     >
                       Register to Join
                     </Link>
-                    <p className="text-base font-medium text-body-color">
-                      📌 Registrations open soon
-                    </p>
                     <p className="mt-2 text-sm text-body-color">
                       Become part of the movement shaping a cleaner, greener, and
                       more responsible India.

@@ -10,11 +10,7 @@ export const metadata: Metadata = {
 const ParticipatingCitiesPage = () => {
   return (
     <>
-      <Breadcrumb
-        pageName="Participating Cities"
-        description="Explore the cities across India that are joining the movement for a greener future."
-      />
-      <section className="pb-[120px] pt-[80px]">
+      <section className="pb-[120px] mt-20 pt-[80px]">
         <div className="container">
           <CitySearch />
         </div>

@@ -12,11 +12,6 @@ export const metadata: Metadata = {
 const RegisterPage = () => {
   return (
     <>
-      <Breadcrumb
-        pageName="nGreen India Challenge Registration"
-        description="National Inter-School E-Waste Awareness & Action Challenge"
-      />
-
       <div className="pb-24 pt-24 md:pb-28 md:pt-28 lg:pb-32 lg:pt-32">
         <div className="container max-w-5xl">
           <SectionTitle
