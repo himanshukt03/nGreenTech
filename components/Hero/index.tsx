@@ -12,6 +12,13 @@ type Slide = {
 
 const slides: Slide[] = [
   {
+    id: "ngreen-army-challenge",
+    title: "nGreen Army Challenge",
+    description:
+      "Empowering students to lead zero-waste challenges and drive measurable sustainability action in their communities.",
+    image: "/images/hero/ngreenarmy.jpeg",
+  },
+  {
     id: "sdg-4",
     title: "SDG 4 – Quality Education",
     description: "Promoting environmental education and leadership skills in students.",
