@@ -84,19 +84,21 @@ const Hero = () => {
     setActiveIndex(index);
   };
 
-  const activeSlide = slides[activeIndex];
+  const safeActiveIndex =
+    ((activeIndex % slides.length) + slides.length) % slides.length;
+  const activeSlide = slides[safeActiveIndex] ?? slides[0];
 
   return (
     <section
       id="home"
-      className="relative flex h-[calc(100vh-70px)] min-h-[700px] w-full items-center overflow-hidden bg-dark/80 pt-[88px] md:h-[calc(100vh-70px)] lg:min-h-[760px]"
+      className="relative flex h-[100svh] min-h-[560px] w-full items-center overflow-hidden bg-dark/80"
     >
       <div className="absolute inset-0">
         {slides.map((slide, index) => (
           <div
             key={slide.id}
             className={`absolute inset-0 transition-all duration-700 ease-out ${
-              index === activeIndex
+              index === safeActiveIndex
                 ? "z-20 opacity-100"
                 : "z-10 opacity-0"
             }`}
@@ -142,7 +144,7 @@ const Hero = () => {
       <div className="absolute bottom-10 left-1/2 z-40 -translate-x-1/2">
         <div className="flex items-center gap-3 rounded-full bg-white/35 px-6 py-3 backdrop-blur-md">
           {slides.map((slide, index) => {
-            const isActive = index === activeIndex;
+            const isActive = index === safeActiveIndex;
             return (
               <button
                 key={slide.id}
